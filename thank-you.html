@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Content Creator Marketing</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .thank-you-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thank-you-card {
+            background-color: hsl(var(--card));
+            border: 2px solid hsl(var(--neon-green) / 0.5);
+            border-radius: var(--radius);
+            padding: 3rem;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 60px hsl(var(--neon-green) / 0.15);
+            animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            color: hsl(var(--neon-green));
+            animation: iconPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        @keyframes iconPop {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .thank-you-card h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: hsl(var(--foreground));
+        }
+
+        .thank-you-card h1 span {
+            color: hsl(var(--neon-green));
+            text-shadow: 0 0 10px hsl(var(--neon-green) / 0.5);
+        }
+
+        .thank-you-card p {
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 2rem;
+            line-height: 1.625;
+        }
+
+        .thank-you-card .btn {
+            margin-top: 1rem;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                top: 100vh;
+                transform: rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-background">
+        <div class="bg-effects">
+            <div class="glow-orb glow-green"></div>
+            <div class="glow-orb glow-orange" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="thank-you-page">
+            <div class="thank-you-card">
+                <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+
+                <h1>You're <span>on the list!</span></h1>
+
+                <p>Thank you for joining our waitlist. We're excited to have you! You'll be among the first to know when we launch and get exclusive early access to our platform.</p>
+
+                <p style="font-size: 0.875rem;">Check your inbox for a confirmation email. If you don't see it, check your spam folder.</p>
+
+                <a href="index.html" class="btn btn-green">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti celebration
+        function createConfetti() {
+            const colors = [
+                'hsl(118, 95%, 56%)', // green
+                'hsl(22, 100%, 50%)', // orange
+                'hsl(118, 95%, 70%)', // light green
+                'hsl(22, 100%, 65%)'  // light orange
+            ];
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 50);
+            }
+        }
+
+        createConfetti();
+    </script>
+</body>
+</html>

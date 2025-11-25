@@ -16,9 +16,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="text-neon-green">CCM</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+    </div>
+
     <div class="min-h-screen bg-background">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="hero-section" id="waitlist">
             <div class="bg-effects">
                 <div class="glow-orb glow-green"></div>
                 <div class="glow-orb glow-orange" style="animation-delay: 1s;"></div>
@@ -36,8 +60,40 @@
                     <p class="hero-description">
                         Unlock powerful analytics, algorithmic insights, and expert guidance tailored for content creators. Whether you stream, create videos, or craft viral shorts—we help you level up your content and build an unstoppable brand.
                     </p>
+
+                    <!-- Platform Selection -->
+                    <div class="platform-select">
+                        <p class="platform-label">I create content on:</p>
+                        <div class="platform-buttons">
+                            <button class="platform-btn" data-platform="twitch">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                    <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+                                </svg>
+                                <span>Twitch</span>
+                            </button>
+                            <button class="platform-btn" data-platform="youtube">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                                <span>YouTube</span>
+                            </button>
+                            <button class="platform-btn" data-platform="tiktok">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                                </svg>
+                                <span>TikTok</span>
+                            </button>
+                            <button class="platform-btn" data-platform="instagram">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                <span>Instagram</span>
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="hero-cta">
-                        <button class="btn btn-orange">Coach Me Now</button>
+                        <a href="#pricing" class="btn btn-orange">Coach Me Now</a>
                         <div class="early-access-info">
                             <h3>Early Access Coming Soon</h3>
                             <p>Join the waitlist to get exclusive updates on our platform launch and be first to access game-changing features.</p>
@@ -48,7 +104,16 @@
                 <div class="signup-card">
                     <h2>Get Early Access</h2>
                     <p class="card-subtitle">Be the first to experience our platform</p>
-                    <form class="signup-form" id="waitlistForm">
+                    <!-- FormSubmit: Replace YOUR_EMAIL@EMAIL.COM with your actual email -->
+                    <form class="signup-form" id="waitlistForm" action="https://formsubmit.co/clumps.vector-8o@icloud.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Waitlist Signup - Content Creator Marketing">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="">
+                        <!-- Honeypot spam protection -->
+                        <input type="text" name="_honey" style="display:none">
+
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -59,17 +124,17 @@
                         </div>
                         <div class="form-group">
                             <label for="format">Content Format</label>
-                            <select id="format" name="format">
+                            <select id="format" name="Content Format">
                                 <option value="">Select your format</option>
-                                <option value="streaming">Live Streaming</option>
-                                <option value="video">Video Creation</option>
-                                <option value="shorts">Shorts / TikTok</option>
-                                <option value="multiple">Multiple Formats</option>
+                                <option value="Live Streaming">Live Streaming</option>
+                                <option value="Video Creation">Video Creation</option>
+                                <option value="Shorts / TikTok">Shorts / TikTok</option>
+                                <option value="Multiple Formats">Multiple Formats</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="feedback">Features You'd Like to See</label>
-                            <textarea id="feedback" name="feedback" rows="3" placeholder="Tell us what would help you grow..."></textarea>
+                            <textarea id="feedback" name="Feature Requests" rows="3" placeholder="Tell us what would help you grow..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-green btn-full">Join Waitlist</button>
                     </form>
@@ -77,8 +142,37 @@
             </div>
         </section>
 
+        <!-- Social Proof / Platform Logos Section -->
+        <section class="social-proof-section">
+            <div class="container">
+                <p class="social-proof-label">Helping creators grow on</p>
+                <div class="platform-logos">
+                    <div class="platform-logo" title="Twitch">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
+                        </svg>
+                    </div>
+                    <div class="platform-logo" title="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </div>
+                    <div class="platform-logo" title="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                        </svg>
+                    </div>
+                    <div class="platform-logo" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Features Section -->
-        <section class="features-section">
+        <section class="features-section" id="features">
             <div class="section-gradient"></div>
             <div class="container">
                 <div class="section-header">
@@ -188,7 +282,7 @@
         </section>
 
         <!-- Consultation Section -->
-        <section id="consultation" class="consultation-section">
+        <section id="pricing" class="consultation-section">
             <div class="bg-effects">
                 <div class="glow-orb glow-orange" style="top: 33%; right: 25%;"></div>
                 <div class="glow-orb glow-green" style="bottom: 33%; left: 25%; animation-delay: 1.5s;"></div>
@@ -338,12 +432,218 @@
         </footer>
     </div>
 
+    <!-- Visual Effects -->
+    <script src="effects.js"></script>
+
+    <!-- Form Handler with AJAX -->
     <script>
-        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('Thank you for joining our waitlist! We\'ll be in touch soon.');
-            this.reset();
+
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+                Submitting...
+            `;
+
+            // Add spinner animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes spin { to { transform: rotate(360deg); } }
+                .spinner { animation: spin 1s linear infinite; }
+                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+                @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+            `;
+            document.head.appendChild(style);
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success - show overlay
+                    showSuccessMessage();
+                    form.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // If AJAX fails, fall back to regular form submission
+                console.log('AJAX failed, using standard submission');
+                form.submit();
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
         });
+
+        function showSuccessMessage() {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+                animation: fadeIn 0.3s ease;
+            `;
+
+            const message = document.createElement('div');
+            message.style.cssText = `
+                text-align: center;
+                padding: 3rem;
+                background: hsl(0 0% 5%);
+                border: 2px solid hsl(118 95% 56% / 0.5);
+                border-radius: 0.5rem;
+                box-shadow: 0 0 40px hsl(118 95% 56% / 0.2);
+                max-width: 400px;
+                animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            `;
+            message.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="hsl(118, 95%, 56%)" stroke-width="2" style="margin: 0 auto 1.5rem;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">You're on the list!</h3>
+                <p style="color: hsl(0 0% 60%); margin-bottom: 1.5rem;">Thank you for joining our waitlist. We'll be in touch soon with exclusive updates.</p>
+                <button onclick="this.closest('div').parentElement.remove()" style="
+                    background: hsl(118 95% 56%);
+                    color: black;
+                    border: none;
+                    padding: 0.75rem 2rem;
+                    font-weight: 700;
+                    border-radius: 0.25rem;
+                    cursor: pointer;
+                    box-shadow: 0 0 20px hsl(118 95% 56% / 0.3);
+                ">Got it</button>
+            `;
+
+            overlay.appendChild(message);
+            document.body.appendChild(overlay);
+
+            // Create confetti
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['hsl(118, 95%, 56%)', 'hsl(22, 100%, 50%)', 'hsl(118, 95%, 70%)', 'hsl(22, 100%, 65%)'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.cssText = `
+                        position: fixed;
+                        width: 10px;
+                        height: 10px;
+                        top: -10px;
+                        left: ${Math.random() * 100}vw;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                        z-index: 10001;
+                        animation: confettiFall ${Math.random() * 2 + 2}s linear forwards;
+                    `;
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 50);
+            }
+
+            // Add confetti animation if not exists
+            if (!document.getElementById('confetti-style')) {
+                const style = document.createElement('style');
+                style.id = 'confetti-style';
+                style.textContent = `@keyframes confettiFall { to { top: 100vh; transform: rotate(720deg); } }`;
+                document.head.appendChild(style);
+            }
+        }
+
+        // ============================================
+        // NAVIGATION & MOBILE MENU
+        // ============================================
+        (function() {
+            const navbar = document.querySelector('.navbar');
+            const navToggle = document.querySelector('.nav-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            if (navToggle && mobileMenu) {
+                navToggle.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+
+                // Close menu when clicking a link
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = navbar.offsetHeight;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        })();
+
+        // ============================================
+        // PLATFORM SELECTION
+        // ============================================
+        (function() {
+            const platformBtns = document.querySelectorAll('.platform-btn');
+
+            platformBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Toggle active state (allow multiple selection)
+                    btn.classList.toggle('active');
+                });
+            });
+        })();
+
     </script>
 </body>
 </html>
