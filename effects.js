@@ -1,5 +1,5 @@
 /**
- * Content Creator Marketing - Visual Effects
+ * Forj - Visual Effects
  * Glowing particles, cursor trails, and ambient animations
  */
 
@@ -38,7 +38,8 @@
         }
 
         init() {
-            const particleCount = Math.floor((this.width * this.height) / 15000);
+            // Fewer particles for cleaner look
+            const particleCount = Math.floor((this.width * this.height) / 50000);
             this.particles = [];
 
             for (let i = 0; i < particleCount; i++) {
@@ -71,8 +72,8 @@
                 particle.draw(this.ctx);
             });
 
-            // Draw connections between nearby particles
-            this.drawConnections();
+            // Connection lines disabled for cleaner look
+            // this.drawConnections();
 
             requestAnimationFrame(() => this.animate());
         }
@@ -103,13 +104,13 @@
         constructor(canvasWidth, canvasHeight) {
             this.x = Math.random() * canvasWidth;
             this.y = Math.random() * canvasHeight;
-            this.size = Math.random() * 3 + 1;
+            this.size = Math.random() * 2 + 0.5;  // Smaller particles
             this.baseSize = this.size;
-            this.speedX = (Math.random() - 0.5) * 0.5;
-            this.speedY = (Math.random() - 0.5) * 0.5;
-            this.isGreen = Math.random() > 0.3; // 70% green, 30% orange
+            this.speedX = (Math.random() - 0.5) * 0.3;  // Slower movement
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.isGreen = Math.random() > 0.3;
             this.color = this.isGreen ? COLORS.green : COLORS.orange;
-            this.pulseSpeed = Math.random() * 0.02 + 0.01;
+            this.pulseSpeed = Math.random() * 0.01 + 0.005;  // Slower pulse
             this.pulseOffset = Math.random() * Math.PI * 2;
         }
 
@@ -143,25 +144,10 @@
         }
 
         draw(ctx) {
-            const pulse = Math.sin(Date.now() * this.pulseSpeed + this.pulseOffset) * 0.3 + 0.7;
-            const glowSize = this.size * 3;
+            // Simple draw without gradient glow - better performance, cleaner look
+            const pulse = Math.sin(Date.now() * this.pulseSpeed + this.pulseOffset) * 0.15 + 0.35;
 
-            // Outer glow
-            const gradient = ctx.createRadialGradient(
-                this.x, this.y, 0,
-                this.x, this.y, glowSize
-            );
-            gradient.addColorStop(0, `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, ${0.4 * pulse})`);
-            gradient.addColorStop(0.5, `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, ${0.1 * pulse})`);
-            gradient.addColorStop(1, 'transparent');
-
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, glowSize, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Core
-            ctx.fillStyle = `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, ${0.8 * pulse})`;
+            ctx.fillStyle = `hsla(${this.color.h}, ${this.color.s}%, ${this.color.l}%, ${pulse})`;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -208,25 +194,17 @@
 
             let time = 0;
             const loop = () => {
-                time += 0.02;
+                time += 0.015;
 
-                const greenGlow = 10 + Math.sin(time) * 5;
-                const orangeGlow = 10 + Math.sin(time + Math.PI) * 5;
+                const greenGlow = 10 + Math.sin(time) * 3;
+                const orangeGlow = 10 + Math.sin(time + Math.PI) * 3;
 
                 if (greenSpan) {
-                    greenSpan.style.textShadow = `
-                        0 0 ${greenGlow}px hsl(118, 95%, 56%),
-                        0 0 ${greenGlow * 2}px hsl(118, 95%, 56%, 0.5),
-                        0 0 ${greenGlow * 3}px hsl(118, 95%, 56%, 0.3)
-                    `;
+                    greenSpan.style.textShadow = `0 0 ${greenGlow}px hsl(118, 95%, 56%, 0.6)`;
                 }
 
                 if (orangeSpan) {
-                    orangeSpan.style.textShadow = `
-                        0 0 ${orangeGlow}px hsl(22, 100%, 50%),
-                        0 0 ${orangeGlow * 2}px hsl(22, 100%, 50%, 0.5),
-                        0 0 ${orangeGlow * 3}px hsl(22, 100%, 50%, 0.3)
-                    `;
+                    orangeSpan.style.textShadow = `0 0 ${orangeGlow}px hsl(22, 100%, 50%, 0.6)`;
                 }
 
                 requestAnimationFrame(loop);
@@ -339,37 +317,34 @@
     }
 
     function initEffects() {
-        // Only initialize on non-touch devices for performance
-        const isTouchDevice = 'ontouchstart' in window;
+        // Detect touch devices - disable particles entirely on mobile for performance
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        // Particle system (hero background)
+        // Particle system (desktop only - mobile Safari has issues with canvas animation)
         const heroSection = document.querySelector('.hero-section');
-        if (heroSection) {
+        if (heroSection && !isTouchDevice) {
             new ParticleSystem(heroSection);
         }
 
-
-        // Scroll-triggered glows
+        // Scroll-triggered fade-in animations
         new ScrollGlow();
 
-        // Text glow animation
-        new TextGlow();
+        // Text glow animation - disabled for cleaner look
+        // new TextGlow();
 
         // Button ripple effects
         new ButtonRipple();
 
-        // Parallax on background orbs
-        if (!isTouchDevice) {
-            new Parallax();
-        }
+        // Parallax on background orbs - disabled for cleaner look
+        // if (!isTouchDevice) {
+        //     new Parallax();
+        // }
 
         // Stats animation
         new StatsAnimation();
 
-        // Ambient background pulse
-        new AmbientPulse();
-
-        console.log('✨ Visual effects initialized');
+        // Ambient background pulse - disabled for cleaner look
+        // new AmbientPulse();
     }
 
     init();

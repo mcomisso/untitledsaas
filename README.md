@@ -1,6 +1,6 @@
-# Content Creator Marketing
+# Forj
 
-Landing page for a platform that helps content creators grow their streams, videos, and shorts with AI-powered insights and algorithmic strategies.
+Landing page for Forj (forj.cloud) - a platform that helps content creators grow their streams, videos, and shorts with AI-powered insights and algorithmic strategies.
 
 ## Features
 
