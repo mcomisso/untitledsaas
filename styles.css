@@ -1758,45 +1758,162 @@ html {
 }
 
 /* ============================================
-   ABSTRACT VISUAL ELEMENTS
+   GAMING HUD VISUAL ELEMENTS
    ============================================ */
 
-/* Floating shapes in hero */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    width: 300px;
-    height: 300px;
-    background: conic-gradient(from 180deg, transparent, hsl(var(--neon-green) / 0.08), transparent);
-    border-radius: 50%;
-    animation: rotate 20s linear infinite;
-    pointer-events: none;
-    z-index: 1;
+/* HUD Corner Brackets Mixin */
+.hud-corners {
+    position: relative;
 }
 
+.hud-corners::before,
+.hud-corners::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(var(--neon-green) / 0.6);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.hud-corners::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.hud-corners::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Additional corners using inner element */
+.pricing-card,
+.info-card,
+.who-card,
+.deliverable-card {
+    position: relative;
+}
+
+.pricing-card::before,
+.pricing-card::after,
+.info-card::before,
+.info-card::after,
+.deliverable-card::before,
+.deliverable-card::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+/* Top-left and bottom-right corners */
+.pricing-card::before,
+.info-card::before,
+.deliverable-card::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid hsl(var(--neon-green));
+    border-left: 2px solid hsl(var(--neon-green));
+}
+
+.pricing-card::after,
+.info-card::after,
+.deliverable-card::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid hsl(var(--neon-green));
+    border-right: 2px solid hsl(var(--neon-green));
+}
+
+/* Featured card uses orange */
+.pricing-card.featured::before {
+    border-color: hsl(var(--neon-orange));
+}
+
+.pricing-card.featured::after {
+    border-color: hsl(var(--neon-orange));
+}
+
+/* Hover effect on corners */
+.pricing-card:hover::before,
+.pricing-card:hover::after,
+.info-card:hover::before,
+.info-card:hover::after,
+.deliverable-card:hover::before,
+.deliverable-card:hover::after {
+    width: 32px;
+    height: 32px;
+}
+
+/* Who cards - smaller corners */
+.who-card::before,
+.who-card::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.who-card::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid hsl(var(--neon-green) / 0.5);
+    border-left: 2px solid hsl(var(--neon-green) / 0.5);
+}
+
+.who-card::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid hsl(var(--neon-green) / 0.5);
+    border-right: 2px solid hsl(var(--neon-green) / 0.5);
+}
+
+.who-card:hover::before,
+.who-card:hover::after {
+    width: 24px;
+    height: 24px;
+    border-color: hsl(var(--neon-green));
+}
+
+/* HUD Status Indicator */
+.hud-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: hsl(var(--neon-green));
+}
+
+.hud-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--neon-green));
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+    box-shadow: 0 0 10px hsl(var(--neon-green));
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Tech grid overlay */
 .hero-section::after {
-    content: '';
-    position: absolute;
-    bottom: 15%;
-    left: 5%;
-    width: 200px;
-    height: 200px;
-    background: conic-gradient(from 0deg, transparent, hsl(var(--neon-orange) / 0.06), transparent);
-    border-radius: 50%;
-    animation: rotate 15s linear infinite reverse;
-    pointer-events: none;
-    z-index: 1;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Decorative grid pattern */
-.consultation-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1806,76 +1923,424 @@ html {
     background-image:
         linear-gradient(hsl(var(--neon-green) / 0.03) 1px, transparent 1px),
         linear-gradient(90deg, hsl(var(--neon-green) / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 1;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 70%);
+}
+
+/* Consultation section tech grid */
+.consultation-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(hsl(var(--neon-green) / 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(var(--neon-green) / 0.02) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;
     z-index: 0;
-    mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
 }
 
-/* Accent line decorations */
+/* HUD-style section headers */
+.section-header h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::before {
+    content: '//';
+    margin-right: 0.5rem;
+    color: hsl(var(--neon-green) / 0.5);
+    font-weight: 400;
+}
+
+/* Tech decorative lines */
+.who-section {
+    position: relative;
+}
+
 .who-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, hsl(var(--neon-green)), transparent);
-    border-radius: 2px;
-}
-
-.who-section {
-    position: relative;
-}
-
-/* Enhanced card corner accents */
-.pricing-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, hsl(var(--neon-green) / 0.1) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-.pricing-card.featured::before {
-    background: linear-gradient(135deg, hsl(var(--neon-orange) / 0.15) 0%, transparent 50%);
-}
-
-/* Subtle scan line effect */
-.info-card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    width: 200px;
     height: 1px;
     background: linear-gradient(90deg, transparent, hsl(var(--neon-green) / 0.5), transparent);
-    animation: scanline 3s ease-in-out infinite;
+}
+
+.who-section::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--background));
+    border: 2px solid hsl(var(--neon-green) / 0.5);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* HUD data readout style for info items */
+.info-item {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: none;
+}
+
+.info-item::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: hsl(var(--neon-green));
+    font-family: monospace;
+    font-weight: bold;
+    animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Tech border for info card */
+.info-card {
+    position: relative;
+    overflow: visible;
+    border: 1px solid hsl(var(--neon-green) / 0.3);
+    background: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(0 0% 4%) 100%);
+}
+
+.info-card::before,
+.info-card::after {
+    box-shadow: 0 0 10px hsl(var(--neon-green) / 0.3);
+}
+
+/* Animated tech line on deliverable card */
+.deliverable-card {
+    overflow: hidden;
+}
+
+.deliverable-card .deliverable-icon {
+    position: relative;
+}
+
+.deliverable-card .deliverable-icon::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--neon-green)), transparent);
+}
+
+/* HUD-style price display */
+.price {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.price::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(var(--neon-green) / 0.3), transparent);
+}
+
+.pricing-card.featured .price::before {
+    background: linear-gradient(90deg, hsl(var(--neon-orange) / 0.3), transparent);
+}
+
+/* Pulsing glow on CTA buttons */
+.btn-primary {
+    animation: btn-glow 3s ease-in-out infinite;
+}
+
+@keyframes btn-glow {
+    0%, 100% { box-shadow: 0 4px 20px hsl(var(--neon-green) / 0.3); }
+    50% { box-shadow: 0 4px 30px hsl(var(--neon-green) / 0.5), 0 0 40px hsl(var(--neon-green) / 0.2); }
+}
+
+.btn-orange {
+    animation: btn-glow-orange 3s ease-in-out infinite;
+}
+
+@keyframes btn-glow-orange {
+    0%, 100% { box-shadow: 0 4px 20px hsl(var(--neon-orange) / 0.3); }
+    50% { box-shadow: 0 4px 30px hsl(var(--neon-orange) / 0.5), 0 0 40px hsl(var(--neon-orange) / 0.2); }
+}
+
+/* Tech-style platform section */
+.platforms-section {
+    position: relative;
+}
+
+.platforms-label {
+    position: relative;
+    z-index: 1;
+    background: hsl(var(--background));
+    padding: 0 1rem;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.platforms-label::before {
+    content: '[';
+    margin-right: 0.25rem;
+    color: hsl(var(--neon-green) / 0.5);
+}
+
+.platforms-label::after {
+    content: ']';
+    margin-left: 0.25rem;
+    color: hsl(var(--neon-green) / 0.5);
+}
+
+/* HUD crosshair decoration */
+.hero-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid hsl(var(--neon-green) / 0.2);
+    border-radius: 50%;
+    transform: translateY(-50%);
     pointer-events: none;
 }
 
-@keyframes scanline {
-    0%, 100% { top: 0; opacity: 0; }
-    50% { top: 100%; opacity: 1; }
+.hero-container::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: -4px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: hsl(var(--neon-green) / 0.3);
+    font-weight: 100;
+    pointer-events: none;
 }
 
-.info-card {
+/* Angled clip on featured card */
+.pricing-card.featured {
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+/* Loading bar style for features list */
+.features-list li {
     position: relative;
-    overflow: hidden;
+}
+
+.features-list li::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 28px;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(var(--neon-green) / 0.1), transparent);
+}
+
+.pricing-card.featured .features-list li::after {
+    background: linear-gradient(90deg, hsl(var(--neon-orange) / 0.1), transparent);
+}
+
+/* ============================================
+   THEME-SPECIFIC STYLES
+   ============================================ */
+
+/* Gaming Theme (Default) - RGB/Esports vibe */
+.theme-gaming {
+    --theme-glow: 142 70% 45%;
+}
+
+.theme-gaming .hero-section {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, hsl(142 70% 45% / 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, hsl(280 85% 55% / 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, hsl(180 100% 50% / 0.06) 0%, transparent 50%),
+        hsl(var(--background));
+}
+
+/* Music Theme - Purple/Pink with waveform feel */
+.theme-music {
+    --theme-glow: 280 85% 55%;
+}
+
+.theme-music .hero-section {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, hsl(280 85% 55% / 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, hsl(320 85% 55% / 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, hsl(45 100% 55% / 0.06) 0%, transparent 50%),
+        hsl(var(--background));
+}
+
+.theme-music .hero-section::after {
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            hsl(280 85% 55% / 0.03) 0px,
+            hsl(280 85% 55% / 0.03) 2px,
+            transparent 2px,
+            transparent 8px
+        );
+    background-size: auto;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 60%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 60%);
+}
+
+.theme-music .btn-primary {
+    animation: btn-glow-music 3s ease-in-out infinite;
+}
+
+@keyframes btn-glow-music {
+    0%, 100% { box-shadow: 0 4px 20px hsl(280 85% 55% / 0.3); }
+    50% { box-shadow: 0 4px 30px hsl(280 85% 55% / 0.5), 0 0 40px hsl(280 85% 55% / 0.2); }
+}
+
+/* Creative Theme - Warm orange/gold with artistic feel */
+.theme-creative {
+    --theme-glow: 25 95% 55%;
+}
+
+.theme-creative .hero-section {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, hsl(25 95% 55% / 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, hsl(45 95% 55% / 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, hsl(350 85% 60% / 0.06) 0%, transparent 50%),
+        hsl(var(--background));
+}
+
+.theme-creative .hero-section::after {
+    background-image:
+        radial-gradient(circle at 20% 30%, hsl(25 95% 55% / 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, hsl(45 95% 55% / 0.04) 0%, transparent 25%),
+        radial-gradient(circle at 50% 50%, hsl(350 85% 60% / 0.03) 0%, transparent 40%);
+    background-size: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.theme-creative .btn-primary {
+    animation: btn-glow-creative 3s ease-in-out infinite;
+}
+
+@keyframes btn-glow-creative {
+    0%, 100% { box-shadow: 0 4px 20px hsl(25 95% 55% / 0.3); }
+    50% { box-shadow: 0 4px 30px hsl(25 95% 55% / 0.5), 0 0 40px hsl(25 95% 55% / 0.2); }
+}
+
+/* IRL/Just Chatting Theme - Blue/Pink social vibe */
+.theme-irl {
+    --theme-glow: 200 85% 55%;
+}
+
+.theme-irl .hero-section {
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, hsl(200 85% 55% / 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, hsl(340 85% 60% / 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, hsl(160 70% 50% / 0.06) 0%, transparent 50%),
+        hsl(var(--background));
+}
+
+.theme-irl .hero-section::after {
+    background-image:
+        linear-gradient(hsl(200 85% 55% / 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, hsl(200 85% 55% / 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.theme-irl .btn-primary {
+    animation: btn-glow-irl 3s ease-in-out infinite;
+}
+
+@keyframes btn-glow-irl {
+    0%, 100% { box-shadow: 0 4px 20px hsl(200 85% 55% / 0.3); }
+    50% { box-shadow: 0 4px 30px hsl(200 85% 55% / 0.5), 0 0 40px hsl(200 85% 55% / 0.2); }
+}
+
+/* Theme-specific corner colors */
+.theme-music .pricing-card::before,
+.theme-music .pricing-card::after,
+.theme-music .info-card::before,
+.theme-music .info-card::after,
+.theme-music .deliverable-card::before,
+.theme-music .deliverable-card::after,
+.theme-music .who-card::before,
+.theme-music .who-card::after {
+    border-color: hsl(280 85% 55%);
+}
+
+.theme-creative .pricing-card::before,
+.theme-creative .pricing-card::after,
+.theme-creative .info-card::before,
+.theme-creative .info-card::after,
+.theme-creative .deliverable-card::before,
+.theme-creative .deliverable-card::after,
+.theme-creative .who-card::before,
+.theme-creative .who-card::after {
+    border-color: hsl(25 95% 55%);
+}
+
+.theme-irl .pricing-card::before,
+.theme-irl .pricing-card::after,
+.theme-irl .info-card::before,
+.theme-irl .info-card::after,
+.theme-irl .deliverable-card::before,
+.theme-irl .deliverable-card::after,
+.theme-irl .who-card::before,
+.theme-irl .who-card::after {
+    border-color: hsl(200 85% 55%);
+}
+
+/* Theme-specific info item cursors */
+.theme-music .info-item::before {
+    color: hsl(280 85% 55%);
+}
+
+.theme-creative .info-item::before {
+    color: hsl(25 95% 55%);
+}
+
+.theme-irl .info-item::before {
+    color: hsl(200 85% 55%);
+}
+
+/* Theme-specific section header prefix */
+.theme-music .section-header h2::before {
+    color: hsl(280 85% 55% / 0.5);
+}
+
+.theme-creative .section-header h2::before {
+    color: hsl(25 95% 55% / 0.5);
+}
+
+.theme-irl .section-header h2::before {
+    color: hsl(200 85% 55% / 0.5);
 }
 
 /* Mobile gradient fallback for particles */
 @media (max-width: 768px) {
     .hero-section {
         background:
-            radial-gradient(ellipse 100% 60% at 50% 0%, hsl(118 70% 48% / 0.15) 0%, transparent 60%),
-            radial-gradient(ellipse 80% 50% at 80% 70%, hsl(22 85% 52% / 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 20% 90%, hsl(118 70% 48% / 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse 100% 60% at 50% 0%, hsl(142 70% 45% / 0.15) 0%, transparent 60%),
+            radial-gradient(ellipse 80% 50% at 80% 70%, hsl(280 85% 55% / 0.1) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 20% 90%, hsl(142 70% 45% / 0.08) 0%, transparent 50%),
             hsl(var(--background));
     }
 
