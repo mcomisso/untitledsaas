@@ -19,8 +19,8 @@
                 accent: '180 100% 50%'       // Cyan
             },
             hero: {
-                title: 'Level up your<br><span class="text-accent">streaming career.</span>',
-                description: 'Whether you\'re grinding ranked or going pro, get expert guidance on growing your audience, optimizing your content, and turning gameplay into income.'
+                title: 'Build a streaming career<br><span class="text-accent">that actually pays.</span>',
+                description: 'Expert strategy sessions for creators ready to turn content into income.'
             },
             whoCards: [
                 '"I\'m ready to take my gaming stream to the next level"',
@@ -28,8 +28,8 @@
                 '"I need help understanding what sponsors look for"',
                 '"I\'m serious about making content creation my career"'
             ],
-            platforms: ['twitch', 'youtube', 'tiktok', 'kick'],
-            ctaText: 'Book a Free Call',
+            platforms: ['twitch', 'youtube', 'tiktok', 'kick', 'instagram'],
+            ctaText: 'Book Your Free Call',
             bodyClass: 'theme-gaming'
         },
 
