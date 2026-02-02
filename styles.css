@@ -8,43 +8,41 @@
 }
 
 /* CSS Variables - Brand Palette */
-/* #313534 - Dark charcoal */
-/* #FE1204 - Red */
-/* #89E751 - Bright green */
-/* #FFE204 - Yellow */
-/* #2EBB90 - Teal green */
+/* Orange-based branding to match backend app (forj) */
+/* Primary: Orange #F59E0B (amber-500) */
+/* Accent: Red-tint */
+/* Background: Warm dark #1C1917 (stone-900) */
 :root {
-    --background: 160 2% 10%;
+    --background: 20 14% 10%;
     --foreground: 0 0% 98%;
-    --card: 160 2% 12%;
+    --card: 20 10% 12%;
     --card-foreground: 0 0% 98%;
-    --primary: 100 75% 61%;
-    --primary-foreground: 160 2% 20%;
-    --secondary: 4 99% 50%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 20 14% 10%;
+    --secondary: 25 95% 53%;
     --secondary-foreground: 0 0% 100%;
-    --neon-green: 100 75% 61%;
-    --neon-green-bright: 100 80% 65%;
-    --neon-teal: 161 61% 46%;
-    --neon-teal-bright: 161 65% 52%;
+    --neon-green: 38 92% 50%;
+    --neon-green-bright: 38 95% 55%;
+    --neon-teal: 32 95% 44%;
+    --neon-teal-bright: 32 98% 50%;
     --neon-red: 4 99% 50%;
     --neon-red-bright: 4 100% 55%;
-    --neon-yellow: 53 100% 51%;
-    --neon-yellow-bright: 53 100% 58%;
-    /* Legacy orange mapping to red for compatibility */
-    --neon-orange: 4 99% 50%;
-    --neon-orange-bright: 4 100% 55%;
-    --muted: 160 2% 18%;
-    --muted-foreground: 0 0% 72%;
-    --border: 160 2% 25%;
-    --input: 160 2% 15%;
-    --ring: 100 75% 61%;
+    --neon-yellow: 45 100% 51%;
+    --neon-yellow-bright: 45 100% 58%;
+    --neon-orange: 25 95% 53%;
+    --neon-orange-bright: 25 98% 58%;
+    --muted: 20 10% 18%;
+    --muted-foreground: 30 5% 72%;
+    --border: 20 10% 25%;
+    --input: 20 10% 15%;
+    --ring: 38 92% 50%;
     --radius: 0.625rem;
     /* Direct hex values for reference */
-    --brand-charcoal: #313534;
+    --brand-charcoal: #1C1917;
     --brand-red: #FE1204;
-    --brand-green: #89E751;
+    --brand-green: #F59E0B;
     --brand-yellow: #FFE204;
-    --brand-teal: #2EBB90;
+    --brand-teal: #D97706;
 }
 
 /* Reset */
@@ -125,9 +123,9 @@ img, svg, video {
     overflow: hidden;
     text-align: center;
     background:
-        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(137, 231, 81, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
         radial-gradient(ellipse 40% 30% at 70% 70%, rgba(254, 18, 4, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 30% at 30% 80%, rgba(46, 187, 144, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 30% at 30% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
         var(--brand-charcoal);
 }
 
@@ -250,7 +248,7 @@ img, svg, video {
     gap: 1rem;
     padding: 0.75rem 1.5rem;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(137, 231, 81, 0.2);
+    border: 1px solid rgba(245, 158, 11, 0.2);
     border-radius: 50px;
     margin-bottom: 1rem;
 }
@@ -351,8 +349,8 @@ img, svg, video {
 .trust-bar {
     padding: 3rem 1rem;
     background: rgba(0, 0, 0, 0.3);
-    border-top: 1px solid rgba(137, 231, 81, 0.1);
-    border-bottom: 1px solid rgba(137, 231, 81, 0.1);
+    border-top: 1px solid rgba(245, 158, 11, 0.1);
+    border-bottom: 1px solid rgba(245, 158, 11, 0.1);
 }
 
 .trust-stats {
@@ -1021,7 +1019,7 @@ img, svg, video {
     text-align: center;
     padding: 3rem;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(137, 231, 81, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.15);
     border-radius: 16px;
     position: relative;
 }
@@ -1033,7 +1031,7 @@ img, svg, video {
     left: 2rem;
     font-size: 5rem;
     font-family: Georgia, serif;
-    color: rgba(137, 231, 81, 0.15);
+    color: rgba(245, 158, 11, 0.15);
     line-height: 1;
 }
 
@@ -1860,7 +1858,7 @@ img, svg, video {
 /* Accent text glow */
 .text-accent {
     color: var(--brand-green);
-    text-shadow: 0 0 30px rgba(137, 231, 81, 0.4);
+    text-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
 }
 
 /* Section header text glow */
@@ -1968,12 +1966,12 @@ html {
     font-weight: 700;
     border: none;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(137, 231, 81, 0.25);
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.25);
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    box-shadow: 0 8px 30px rgba(137, 231, 81, 0.4);
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
     transform: translateY(-3px);
 }
 
@@ -2076,8 +2074,8 @@ html {
 }
 
 .transformation-card.after {
-    background: linear-gradient(135deg, rgba(137, 231, 81, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
-    border: 1px solid rgba(137, 231, 81, 0.2);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 .transformation-card:hover {
@@ -2090,8 +2088,8 @@ html {
 }
 
 .transformation-card.after:hover {
-    border-color: rgba(137, 231, 81, 0.4);
-    box-shadow: 0 8px 30px rgba(137, 231, 81, 0.1);
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.1);
 }
 
 .transformation-label {
@@ -2171,7 +2169,7 @@ html {
 .btn-secondary:hover {
     background: var(--brand-green);
     color: var(--brand-charcoal);
-    box-shadow: 0 4px 20px rgba(137, 231, 81, 0.3);
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
     transform: translateY(-2px);
 }
 
@@ -2887,17 +2885,9 @@ html {
 @media (max-width: 768px) {
     .hero-section {
         background:
-            radial-gradient(ellipse 100% 60% at 50% 0%, hsl(142 70% 45% / 0.15) 0%, transparent 60%),
+            radial-gradient(ellipse 100% 60% at 50% 0%, hsl(38 92% 50% / 0.15) 0%, transparent 60%),
             radial-gradient(ellipse 80% 50% at 80% 70%, hsl(25 95% 55% / 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 20% 90%, hsl(142 70% 45% / 0.08) 0%, transparent 50%),
-            hsl(var(--background));
-    }
-
-    .theme-gaming .hero-section {
-        background:
-            radial-gradient(ellipse 100% 60% at 50% 0%, hsl(142 70% 45% / 0.15) 0%, transparent 60%),
-            radial-gradient(ellipse 80% 50% at 80% 70%, hsl(25 95% 55% / 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse 60% 40% at 20% 90%, hsl(142 70% 45% / 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse 60% 40% at 20% 90%, hsl(38 92% 50% / 0.08) 0%, transparent 50%),
             hsl(var(--background));
     }
 
