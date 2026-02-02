@@ -3095,6 +3095,92 @@ html {
     }
 }
 
+/* Waitlist Form */
+.waitlist-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.waitlist-form {
+    width: 100%;
+}
+
+.waitlist-input-group {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.waitlist-input-group input[type="email"] {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius);
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.waitlist-input-group input[type="email"]:focus {
+    border-color: var(--brand-green);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.waitlist-input-group input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.waitlist-message {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    min-height: 1.5rem;
+}
+
+.waitlist-message.success {
+    color: #22c55e;
+}
+
+.waitlist-message.error {
+    color: #ef4444;
+}
+
+.hero-buttons-secondary {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.hero-beta-note {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+}
+
+.beta-badge {
+    background: rgba(245, 158, 11, 0.15);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+@media (max-width: 480px) {
+    .waitlist-input-group {
+        flex-direction: column;
+    }
+    
+    .waitlist-input-group input[type="email"],
+    .waitlist-input-group .btn {
+        width: 100%;
+    }
+}
+
 /* ============================================
    PROBLEM SECTION (Pain Points)
    ============================================ */
