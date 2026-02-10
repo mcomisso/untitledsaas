@@ -6,10 +6,10 @@
 (function() {
     'use strict';
 
-    // Theme colors
+    // Theme colors (amber/warm palette)
     const COLORS = {
-        green: { h: 118, s: 95, l: 56 },
-        orange: { h: 22, s: 100, l: 50 }
+        amber: { h: 38, s: 92, l: 50 },
+        orange: { h: 25, s: 95, l: 53 }
     };
 
     // ============================================
@@ -87,7 +87,7 @@
 
                     if (distance < 120) {
                         const opacity = (1 - distance / 120) * 0.15;
-                        const color = this.particles[i].isGreen ? COLORS.green : COLORS.orange;
+                        const color = this.particles[i].isAmber ? COLORS.amber : COLORS.orange;
                         this.ctx.strokeStyle = `hsla(${color.h}, ${color.s}%, ${color.l}%, ${opacity})`;
                         this.ctx.lineWidth = 1;
                         this.ctx.beginPath();
@@ -108,8 +108,8 @@
             this.baseSize = this.size;
             this.speedX = (Math.random() - 0.5) * 0.3;  // Slower movement
             this.speedY = (Math.random() - 0.5) * 0.3;
-            this.isGreen = Math.random() > 0.3;
-            this.color = this.isGreen ? COLORS.green : COLORS.orange;
+            this.isAmber = Math.random() > 0.3;
+            this.color = this.isAmber ? COLORS.amber : COLORS.orange;
             this.pulseSpeed = Math.random() * 0.01 + 0.005;  // Slower pulse
             this.pulseOffset = Math.random() * Math.PI * 2;
         }
@@ -160,7 +160,7 @@
     // ============================================
     class ScrollGlow {
         constructor() {
-            this.elements = document.querySelectorAll('.feature-card, .pricing-card, .signup-card, .preview-card, .deliverable-card');
+            this.elements = document.querySelectorAll('.pricing-card, .testimonial-card, .coaching-card');
             this.bindEvents();
         }
 
@@ -189,22 +189,15 @@
         }
 
         animate() {
-            const greenSpan = this.heroTitle.querySelector('.text-neon-green');
-            const orangeSpan = this.heroTitle.querySelector('.text-neon-orange');
+            const accentSpan = this.heroTitle.querySelector('.text-accent');
 
             let time = 0;
             const loop = () => {
                 time += 0.015;
+                const glow = 20 + Math.sin(time) * 8;
 
-                const greenGlow = 10 + Math.sin(time) * 3;
-                const orangeGlow = 10 + Math.sin(time + Math.PI) * 3;
-
-                if (greenSpan) {
-                    greenSpan.style.textShadow = `0 0 ${greenGlow}px hsl(118, 95%, 56%, 0.6)`;
-                }
-
-                if (orangeSpan) {
-                    orangeSpan.style.textShadow = `0 0 ${orangeGlow}px hsl(22, 100%, 50%, 0.6)`;
+                if (accentSpan) {
+                    accentSpan.style.textShadow = `0 0 ${glow}px rgba(245, 158, 11, 0.5)`;
                 }
 
                 requestAnimationFrame(loop);

@@ -21,14 +21,14 @@
 
         .thank-you-card {
             background-color: hsl(var(--card));
-            border: 2px solid hsl(var(--neon-green) / 0.5);
+            border: 2px solid hsl(var(--accent) / 0.5);
             border-radius: var(--radius);
             padding: 3rem;
             max-width: 500px;
             text-align: center;
             position: relative;
             z-index: 10;
-            box-shadow: 0 0 60px hsl(var(--neon-green) / 0.15);
+            box-shadow: 0 0 60px hsl(var(--accent) / 0.15);
             animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -47,7 +47,7 @@
             width: 80px;
             height: 80px;
             margin: 0 auto 1.5rem;
-            color: hsl(var(--neon-green));
+            color: hsl(var(--accent));
             animation: iconPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
         }
 
@@ -70,8 +70,8 @@
         }
 
         .thank-you-card h1 span {
-            color: hsl(var(--neon-green));
-            text-shadow: 0 0 10px hsl(var(--neon-green) / 0.5);
+            color: hsl(var(--accent));
+            text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
         }
 
         .thank-you-card p {
@@ -129,10 +129,10 @@
         // Create confetti celebration
         function createConfetti() {
             const colors = [
-                'hsl(118, 95%, 56%)', // green
-                'hsl(22, 100%, 50%)', // orange
-                'hsl(118, 95%, 70%)', // light green
-                'hsl(22, 100%, 65%)'  // light orange
+                'hsl(38, 92%, 50%)',  // amber
+                'hsl(25, 95%, 53%)',  // orange
+                'hsl(38, 92%, 65%)',  // light amber
+                'hsl(45, 100%, 51%)' // yellow
             ];
 
             for (let i = 0; i < 50; i++) {
