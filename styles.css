@@ -764,6 +764,8 @@ img, svg, video {
     display: flex;
     gap: 1rem;
     margin-top: 0.5rem;
+    justify-content: center;
+    width: 100%;
 }
 
 @media (max-width: 480px) {
@@ -771,6 +773,14 @@ img, svg, video {
 
     .waitlist-input-group input[type="email"],
     .waitlist-input-group .btn {
+        width: 100%;
+    }
+
+    .hero-buttons-secondary {
+        flex-direction: column;
+    }
+
+    .hero-buttons-secondary .btn {
         width: 100%;
     }
 }
@@ -1053,7 +1063,12 @@ img, svg, video {
     font-weight: 700;
 }
 
-.feature-screenshot { position: relative; }
+.feature-screenshot { position: relative; display: none; }
+
+/* When screenshots are hidden, feature content spans full width */
+.feature-block {
+    grid-template-columns: 1fr;
+}
 
 .screenshot-placeholder {
     display: flex;
@@ -1885,7 +1900,7 @@ img, svg, video {
 .final-cta-contact a:hover { text-decoration: underline; }
 
 @media (max-width: 480px) {
-    .final-cta-buttons { flex-direction: column; }
+    .final-cta-buttons { flex-direction: column; align-items: center; }
     .final-cta-buttons .btn { width: 100%; }
     .final-cta-content h2 { font-size: 2rem; }
 }
