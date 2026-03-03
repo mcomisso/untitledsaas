@@ -160,7 +160,7 @@
     // ============================================
     class ScrollGlow {
         constructor() {
-            this.elements = document.querySelectorAll('.pricing-card, .testimonial-card, .coaching-card');
+            this.elements = document.querySelectorAll('.call-option-card, .testimonial-card, .highlight-card');
             this.bindEvents();
         }
 
@@ -255,38 +255,6 @@
     }
 
     // ============================================
-    // STATS COUNTER ANIMATION
-    // ============================================
-    class StatsAnimation {
-        constructor() {
-            this.observed = false;
-            const statsSection = document.querySelector('.stats-grid');
-            if (statsSection) {
-                const observer = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting && !this.observed) {
-                        this.observed = true;
-                        this.animateStats();
-                    }
-                }, { threshold: 0.5 });
-                observer.observe(statsSection);
-            }
-        }
-
-        animateStats() {
-            document.querySelectorAll('.stat-value').forEach(stat => {
-                stat.style.opacity = '0';
-                stat.style.transform = 'translateY(20px)';
-
-                setTimeout(() => {
-                    stat.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-                    stat.style.opacity = '1';
-                    stat.style.transform = 'translateY(0)';
-                }, Math.random() * 300);
-            });
-        }
-    }
-
-    // ============================================
     // AMBIENT BACKGROUND PULSE
     // ============================================
     class AmbientPulse {
@@ -332,9 +300,6 @@
         // if (!isTouchDevice) {
         //     new Parallax();
         // }
-
-        // Stats animation
-        new StatsAnimation();
 
         // Ambient background pulse - disabled for cleaner look
         // new AmbientPulse();
