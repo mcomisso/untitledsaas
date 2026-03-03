@@ -431,8 +431,8 @@
             // Mobile menu toggle
             if (navToggle && mobileMenu) {
                 navToggle.addEventListener('click', () => {
-                    mobileMenu.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                    mobileMenu.classList.toggle('active');
+                    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
                 });
 
                 mobileMenuClose.addEventListener('click', () => {
