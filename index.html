@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forj Intel - YouTube Analytics + Expert Coaching</title>
-    <meta name="description" content="Grow your YouTube channel with intelligence + guidance. The analytics platform that shows you what's working, plus expert coaching to tell you what to do next.">
+    <meta name="description" content="Grow your YouTube channel with intelligence + guidance. Analytics that show what's working, plus expert coaching that tells you what to do next.">
     <meta name="author" content="Forj Intel">
 
     <meta property="og:title" content="Forj Intel - YouTube Analytics + Expert Coaching">
-    <meta property="og:description" content="The analytics platform that shows you what's working, plus expert coaching to tell you what to do next. Data + direction = growth.">
+    <meta property="og:description" content="Analytics that show what's working. Expert coaching that tells you what to do next. Data + direction = growth.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://forj.cloud">
     <meta property="og:image" content="https://forj.cloud/og-image.png">
@@ -36,10 +36,8 @@
                 <span class="nav-logo-text">Forj<span class="nav-logo-accent">Intel</span></span>
             </a>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#coaching">Coaching</a>
-                <a href="#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a>
+                <a href="#call-options">Coaching</a>
+                <a href="#book" class="btn btn-primary btn-sm">Book a Call</a>
             </div>
             <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -57,10 +55,8 @@
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </button>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#coaching">Coaching</a>
-        <a href="#waitlist" class="btn btn-primary">Join Waitlist</a>
+        <a href="#call-options">Coaching</a>
+        <a href="#book" class="btn btn-primary">Book a Call</a>
     </div>
 
     <main id="main-content" class="min-h-screen bg-background">
@@ -69,634 +65,147 @@
              ============================================ -->
         <section class="hero-section" id="hero">
             <div class="hero-container">
-                <div class="hero-header">
-                    <div class="hero-logo">
-                        <img src="logo_notext_web.png" alt="Forj Intel" class="hero-logo-img" width="200" height="418">
-                    </div>
-
-                    <div class="hero-text">
-                        <div class="credibility-bar">
-                            <span class="credibility-item beta-badge">
-                                🔐 <strong>Private Beta</strong>
-                            </span>
-                            <span class="credibility-divider"></span>
-                            <span class="credibility-item">
-                                <strong>500+</strong> creators growing
-                            </span>
-                            <span class="credibility-divider"></span>
-                            <span class="credibility-item">
-                                <strong>5 years</strong> experience
-                            </span>
-                        </div>
-
-                        <h1 class="hero-title">
-                            Grow Your YouTube Channel with<br>
-                            <span class="text-accent">Intelligence + Guidance</span>
-                        </h1>
-
-                        <p class="hero-description">
-                            The analytics platform that shows you what's working, plus expert coaching to tell you what to do next.
-                        </p>
-
-                        <p class="hero-beta-note">
-                            We're currently in private beta. Join the waitlist to get early access.
-                        </p>
-                    </div>
+                <div class="hero-logo">
+                    <img src="logo_notext_web.png" alt="Forj Intel" class="hero-logo-img" width="200" height="418">
                 </div>
 
-                <div class="hero-cta" id="waitlist">
-                    <div class="waitlist-form-container">
+                <h1 class="hero-title">
+                    Grow Your YouTube Channel with<br>
+                    <span class="text-accent">Intelligence + Guidance</span>
+                </h1>
+
+                <p class="hero-description">
+                    Analytics that show what's working. Expert coaching that tells you what to do next.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#book" class="btn btn-primary btn-large">Book Your Free 15-Min Call</a>
+                    <div class="hero-waitlist-toggle">
+                        <span class="hero-or">or</span>
+                        <button type="button" class="waitlist-toggle-link" id="waitlistToggle">Join the Waitlist</button>
+                    </div>
+                    <div class="waitlist-inline-form" id="waitlistInlineForm">
                         <form id="waitlistForm" class="waitlist-form">
                             <div class="waitlist-input-group">
                                 <label for="waitlistEmail" class="sr-only">Email address</label>
                                 <input type="email" id="waitlistEmail" placeholder="Enter your email" required>
-                                <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+                                <button type="submit" class="btn btn-primary">Join</button>
                             </div>
                             <div id="waitlistMessage" class="waitlist-message"></div>
                         </form>
-                        <div class="hero-buttons-secondary">
-                            <a href="https://app.forj.cloud/login" class="btn btn-secondary">
-                                I Have a Code →
-                            </a>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Hero Visual: Dashboard + Coaching Split -->
-                <div class="hero-visual">
-                    <div class="hero-mock">
-                        <div class="mock-dashboard">
-                            <div class="mock-topbar">
-                                <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
-                                <span class="mock-title">Analytics Dashboard</span>
-                            </div>
-                            <div class="mock-body">
-                                <div class="mock-stats-row">
-                                    <div class="mock-stat"><span class="mock-stat-val">12.4K</span><span class="mock-stat-label">Views</span></div>
-                                    <div class="mock-stat up"><span class="mock-stat-val">+18%</span><span class="mock-stat-label">Growth</span></div>
-                                    <div class="mock-stat"><span class="mock-stat-val">847</span><span class="mock-stat-label">Subs</span></div>
-                                </div>
-                                <div class="mock-chart">
-                                    <svg viewBox="0 0 200 60" preserveAspectRatio="none">
-                                        <polyline points="0,55 20,48 40,52 60,35 80,38 100,25 120,28 140,15 160,18 180,8 200,5" fill="none" stroke="rgba(245,158,11,0.6)" stroke-width="2"/>
-                                        <polyline points="0,55 20,48 40,52 60,35 80,38 100,25 120,28 140,15 160,18 180,8 200,5" fill="url(#chartGrad)" stroke="none"/>
-                                        <defs><linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(245,158,11,0.15)"/><stop offset="100%" stop-color="rgba(245,158,11,0)"/></linearGradient></defs>
-                                    </svg>
-                                </div>
-                                <div class="mock-bars">
-                                    <div class="mock-bar" style="--w:85%"></div>
-                                    <div class="mock-bar" style="--w:62%"></div>
-                                    <div class="mock-bar" style="--w:45%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mock-divider">+</div>
-                        <div class="mock-coaching">
-                            <div class="mock-topbar coaching">
-                                <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
-                                <span class="mock-title">Strategy Session</span>
-                            </div>
-                            <div class="mock-body">
-                                <div class="mock-chat">
-                                    <div class="mock-msg coach">Review your Q4 content strategy and optimize for the algorithm shift.</div>
-                                    <div class="mock-msg user">Should I focus more on Shorts or long-form?</div>
-                                    <div class="mock-msg coach">Your data shows long-form drives 3x more subs. Let's double down.</div>
-                                </div>
-                                <div class="mock-action">
-                                    <span>Action Plan</span>
-                                    <div class="mock-checklist">
-                                        <div class="mock-check done"></div>
-                                        <div class="mock-check done"></div>
-                                        <div class="mock-check"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="credibility-bar">
+                    <span class="credibility-item beta-badge">
+                        <strong>Private Beta</strong>
+                    </span>
+                    <span class="credibility-divider"></span>
+                    <span class="credibility-item">
+                        <strong>10 years</strong> experience
+                    </span>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             SECTION 2: PROBLEM (Pain Points)
+             SECTION 2: WHAT YOU GET (Highlights Grid)
              ============================================ -->
-        <section class="problem-section" id="problem">
+        <section class="highlights-section" id="highlights">
             <div class="container">
                 <div class="section-header">
-                    <h2>Sound Familiar?</h2>
+                    <h2>What You Get</h2>
                 </div>
 
-                <div class="pain-points-grid">
-                    <div class="pain-point-card">
-                        <div class="pain-icon">📈</div>
-                        <h3>Posting consistently but growing randomly</h3>
-                        <p>You have no idea which videos actually bring subscribers vs just views.</p>
-                    </div>
-
-                    <div class="pain-point-card">
-                        <div class="pain-icon">🤔</div>
-                        <h3>Watching analytics but confused</h3>
-                        <p>Views, CTR, retention—but what should you actually DO differently?</p>
-                    </div>
-
-                    <div class="pain-point-card">
-                        <div class="pain-icon">😵</div>
-                        <h3>Tried tools but ended up more confused</h3>
-                        <p>More data ≠ more clarity. You need insights, not just numbers.</p>
-                    </div>
-
-                    <div class="pain-point-card">
-                        <div class="pain-icon">💸</div>
-                        <h3>Can't afford a full-time strategist</h3>
-                        <p>Agency retainers start at £2K/month. You need affordable expertise.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             SECTION 3: SOLUTION (Complete Growth Stack)
-             ============================================ -->
-        <section class="solution-section" id="solution">
-            <div class="container">
-                <div class="section-header">
-                    <h2>The Complete Growth Stack</h2>
-                    <p>Data without direction is just noise. Strategy without data is just guessing.<br><strong>Get both. Grow faster.</strong></p>
-                </div>
-
-                <div class="solution-grid">
-                    <div class="solution-card tool">
-                        <div class="solution-icon">🖥️</div>
-                        <h3>FORJ INTEL APP</h3>
-                        <p class="solution-subtitle">Your 24/7 Analyst</p>
-                        <ul class="solution-features">
-                            <li>Real-time metrics & analytics</li>
-                            <li>Trend discovery & alerts</li>
-                            <li>AI-powered insights</li>
-                            <li>Competitor intelligence</li>
-                            <li>Content optimization tools</li>
-                        </ul>
-                    </div>
-
-                    <div class="solution-plus">+</div>
-
-                    <div class="solution-card coaching">
-                        <div class="solution-icon">🎯</div>
-                        <h3>EXPERT COACHING</h3>
-                        <p class="solution-subtitle">Your Growth Partner</p>
-                        <ul class="solution-features">
-                            <li>1:1 strategy calls</li>
-                            <li>Personalized growth plans</li>
-                            <li>Expert content feedback</li>
-                            <li>Accountability & support</li>
-                            <li>Data-backed recommendations</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             SECTION 4: PLATFORM FEATURES
-             ============================================ -->
-        <section class="features-section" id="features">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Everything You Need to Grow</h2>
-                    <p>Powerful analytics tools designed specifically for YouTube creators</p>
-                </div>
-
-                <!-- Feature 1: Analytics Dashboard -->
-                <div class="feature-block">
-                    <div class="feature-content">
-                        <div class="feature-badge">Analytics</div>
-                        <h3>Finally Understand Your Numbers</h3>
-                        <p>Go beyond YouTube Studio with metrics that actually tell you what to do. See which videos drive subscribers, which thumbnails get clicks, and where your audience drops off.</p>
-                        <ul class="feature-bullets">
-                            <li>Total views, likes, comments at a glance</li>
-                            <li>Channel growth tracking over time</li>
-                            <li>Traffic source breakdown</li>
-                            <li>Shorts vs Long-form comparison</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 2: Trend Discovery -->
-                <div class="feature-block reverse">
-                    <div class="feature-content">
-                        <div class="feature-badge">Trends</div>
-                        <h3>Catch Trends Before They Peak</h3>
-                        <p>Find trending topics in your niche before everyone else jumps on them. The algorithm rewards first movers—be one of them.</p>
-                        <ul class="feature-bullets">
-                            <li>Real-time trend monitoring</li>
-                            <li>Niche-specific recommendations</li>
-                            <li>Trend velocity indicators</li>
-                            <li>Early mover advantage</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 3: AI Insights -->
-                <div class="feature-block">
-                    <div class="feature-content">
-                        <div class="feature-badge">AI-Powered</div>
-                        <h3>AI That Actually Helps</h3>
-                        <p>Stop guessing. Get personalized recommendations on what to post, when to post, and how to optimize your content.</p>
-                        <ul class="feature-bullets">
-                            <li>Posting time optimization</li>
-                            <li>Content suggestions based on your data</li>
-                            <li>Performance tips with priority levels</li>
-                            <li>Actionable, not just informative</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 4: Competitor Tracking -->
-                <div class="feature-block reverse">
-                    <div class="feature-content">
-                        <div class="feature-badge">Competition</div>
-                        <h3>Learn From Your Competition</h3>
-                        <p>Track other channels in your niche. See what's working for them, learn from their wins, and avoid their mistakes.</p>
-                        <ul class="feature-bullets">
-                            <li>Add any YouTube channel</li>
-                            <li>Side-by-side performance comparison</li>
-                            <li>Content strategy analysis</li>
-                            <li>Gap identification</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 5: Title & Thumbnail Optimizer -->
-                <div class="feature-block">
-                    <div class="feature-content">
-                        <div class="feature-badge">Optimization</div>
-                        <h3>Optimize Before You Publish</h3>
-                        <p>Test your titles and thumbnails with AI-powered analysis. Know your CTR potential before wasting a video's first impression.</p>
-                        <ul class="feature-bullets">
-                            <li>Title scoring with variations</li>
-                            <li>Thumbnail clickability analysis</li>
-                            <li>Face detection, text analysis, color breakdown</li>
-                            <li>Copy-paste ready suggestions</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 6: Video Ideas Generator -->
-                <div class="feature-block reverse">
-                    <div class="feature-content">
-                        <div class="feature-badge">Ideas</div>
-                        <h3>Never Run Out of Ideas</h3>
-                        <p>AI-powered video ideas based on YOUR niche and what's trending. Complete with title variations, tags, and opening hooks.</p>
-                        <ul class="feature-bullets">
-                            <li>Niche-aware suggestions</li>
-                            <li>Title + hook + tags included</li>
-                            <li>Difficulty estimates</li>
-                            <li>Trend relevance scores</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 7: Content Calendar -->
-                <div class="feature-block">
-                    <div class="feature-content">
-                        <div class="feature-badge">Planning</div>
-                        <h3>Plan Like a Pro</h3>
-                        <p>Schedule your content pipeline from idea to publish. Never scramble for what to post next again.</p>
-                        <ul class="feature-bullets">
-                            <li>Visual content calendar</li>
-                            <li>Status tracking (idea → scripting → filming → editing → scheduled)</li>
-                            <li>Ideas backlog management</li>
-                            <li>Posting schedule optimization</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 8: Collaboration Finder -->
-                <div class="feature-block reverse">
-                    <div class="feature-content">
-                        <div class="feature-badge">Growth</div>
-                        <h3>Find Your Next Collab Partner</h3>
-                        <p>Discover compatible creators in your niche for cross-promotion. AI-matched based on audience overlap and content style.</p>
-                        <ul class="feature-bullets">
-                            <li>Compatibility scoring</li>
-                            <li>Collaboration idea suggestions</li>
-                            <li>Outreach templates</li>
-                            <li>Filter by subscriber count</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             SECTION 5: COACHING SERVICES
-             ============================================ -->
-        <section class="coaching-section" id="coaching">
-            <div class="container">
-                <div class="section-header">
-                    <h2>When Data Isn't Enough, Talk to a Human</h2>
-                    <p>The platform shows you WHAT's happening. Our coaches tell you WHY and WHAT TO DO about it.</p>
-                </div>
-
-                <div class="coaching-card">
-                    <div class="coaching-badge">Most Popular</div>
-                    <div class="coaching-content">
-                        <div class="coaching-info">
-                            <h3>Strategy Session</h3>
-                            <div class="coaching-price">
-                                <span class="price-amount">£85</span>
-                                <span class="price-period">/ 60 minutes</span>
-                            </div>
-                            <p class="coaching-description">A comprehensive deep-dive into your channel with actionable strategies for growth. We use YOUR Forj Intel data in the session.</p>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 3v18h18"/>
+                                <path d="M7 16l4-8 4 5 5-9"/>
+                            </svg>
                         </div>
-                        <div class="coaching-features">
-                            <ul>
-                                <li>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>Complete channel audit using YOUR Forj Intel data</span>
-                                </li>
-                                <li>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>Personalized growth roadmap</span>
-                                </li>
-                                <li>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>Revenue optimization strategy</span>
-                                </li>
-                                <li>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                    <span>Written action plan (48hr delivery)</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <h3>Smart Analytics</h3>
+                        <p>Understand what's actually driving your growth</p>
                     </div>
-                    <div class="coaching-cta">
-                        <a href="#book" class="btn btn-featured">Book Strategy Session</a>
-                    </div>
-                </div>
 
-                <div class="free-call-fallback">
-                    <div class="fallback-content">
-                        <span class="fallback-prefix">Not ready?</span>
-                        <span class="fallback-text">Start with a <strong>FREE 15-minute Discovery Call</strong></span>
-                        <span class="fallback-subtext">No commitment • See if we're a fit</span>
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M11 8v6"/>
+                                <path d="M8 11h6"/>
+                            </svg>
+                        </div>
+                        <h3>Trend Discovery</h3>
+                        <p>Catch trends before they peak</p>
                     </div>
-                    <a href="#book" class="btn btn-outline-light">Book Free Call</a>
+
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/>
+                                <path d="M8.24 4.77A4 4 0 0 1 12 2"/>
+                                <path d="M14.5 14.5L12 12V8"/>
+                                <rect x="2" y="14" width="20" height="8" rx="2"/>
+                                <path d="M6 18h.01"/>
+                                <path d="M10 18h.01"/>
+                                <path d="M14 18h.01"/>
+                            </svg>
+                        </div>
+                        <h3>AI Insights</h3>
+                        <p>Personalized recommendations on what to do next</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
+                        <h3>Expert Coaching</h3>
+                        <p>1:1 strategy calls with real humans</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             SECTION 6: HOW IT WORKS
+             SECTION 3: CALL OPTIONS (Two Cards)
              ============================================ -->
-        <section class="how-it-works-section" id="how-it-works">
+        <section class="call-options-section" id="call-options">
             <div class="container">
                 <div class="section-header">
-                    <h2>How It Works</h2>
-                    <p>Get started in minutes, see results in days</p>
+                    <h2>Choose Your Starting Point</h2>
                 </div>
 
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3>Sign Up Free</h3>
-                        <p>Connect your YouTube channel in seconds. No credit card required.</p>
+                <div class="call-options-grid">
+                    <div class="call-option-card">
+                        <span class="call-type-label">Discovery Call</span>
+                        <div class="call-price">FREE</div>
+                        <div class="call-duration">15 minutes</div>
+                        <p class="call-description">See if we're a fit. No commitment, no pitch &mdash; just honest feedback on your growth strategy.</p>
+                        <a href="#book" class="btn btn-primary btn-full call-option-btn" data-call-type="free-discovery">Book Free Call</a>
                     </div>
 
-                    <div class="step-connector">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3>Get Your Data</h3>
-                        <p>Your analytics sync automatically. See insights within minutes.</p>
-                    </div>
-
-                    <div class="step-connector">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3>Explore & Learn</h3>
-                        <p>Use AI insights, track trends, optimize your content strategy.</p>
-                    </div>
-
-                    <div class="step-connector">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h3>Level Up with Coaching</h3>
-                        <p>When you're ready for personalized guidance, book a strategy call.</p>
+                    <div class="call-option-card">
+                        <span class="call-type-label">Strategy Session</span>
+                        <div class="call-price">&pound;85</div>
+                        <div class="call-duration">60 minutes</div>
+                        <p class="call-description">Deep-dive into your channel with a personalized growth roadmap and action plan delivered within 48 hours.</p>
+                        <a href="#book" class="btn btn-primary btn-full call-option-btn" data-call-type="strategy-session">Book Strategy Session</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             SECTION 7: PRICING
+             SECTION 4: SOCIAL PROOF (Testimonials)
              ============================================ -->
-        <section class="pricing-section" id="pricing">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Simple, Transparent Pricing</h2>
-                    <p>Start free, upgrade when you're ready</p>
-                </div>
-
-                <div class="pricing-grid">
-                    <!-- Free Tier -->
-                    <div class="pricing-card">
-                        <div class="pricing-header">
-                            <h3>Starter</h3>
-                            <div class="pricing-price">
-                                <span class="price-amount">Free</span>
-                                <span class="price-period">forever</span>
-                            </div>
-                            <p class="pricing-description">Perfect for getting started</p>
-                        </div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Basic analytics dashboard</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>7-day trend tracking</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>3 video analyses per month</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Email support</span>
-                            </li>
-                        </ul>
-                        <a href="#waitlist" class="btn btn-outline-primary btn-full">Join Waitlist</a>
-                    </div>
-
-                    <!-- Pro Tier -->
-                    <div class="pricing-card featured">
-                        <div class="pricing-badge">Most Popular</div>
-                        <div class="pricing-header">
-                            <h3>Pro</h3>
-                            <div class="pricing-price">
-                                <span class="price-amount">£19</span>
-                                <span class="price-period">/month</span>
-                            </div>
-                            <p class="pricing-description">For serious creators</p>
-                        </div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Everything in Starter</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Full AI insights engine</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Unlimited video analyses</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Competitor tracking (5 channels)</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Ideas generator</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Content calendar</span>
-                            </li>
-                        </ul>
-                        <a href="#waitlist" class="btn btn-primary btn-full">Join Waitlist</a>
-                    </div>
-
-                    <!-- Growth Tier -->
-                    <div class="pricing-card growth">
-                        <div class="pricing-header">
-                            <h3>Growth</h3>
-                            <div class="pricing-price">
-                                <span class="price-amount">£49</span>
-                                <span class="price-period">/month</span>
-                            </div>
-                            <p class="pricing-description">For maximum results</p>
-                        </div>
-                        <ul class="pricing-features">
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Everything in Pro</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Priority support</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><strong>1 monthly coaching call</strong></span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Dedicated strategist</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Unlimited competitor tracking</span>
-                            </li>
-                            <li>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Collaboration finder</span>
-                            </li>
-                        </ul>
-                        <a href="#waitlist" class="btn btn-outline-primary btn-full">Join Waitlist</a>
-                    </div>
-                </div>
-
-                <div class="pricing-footer">
-                    <p>All plans include 14-day money-back guarantee</p>
-                    <p class="pricing-coaching-note">Need more coaching? Strategy sessions available à la carte: <strong>£85/session</strong> or bundle with any plan for <strong>£65/session</strong></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             SECTION 8: TRANSFORMATION (Before/After)
-             ============================================ -->
-        <section class="transformation-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>From Guessing to Growing</h2>
-                </div>
-
-                <div class="transformation-grid">
-                    <div class="transformation-card before">
-                        <div class="transformation-label">Where you are now</div>
-                        <ul class="transformation-list">
-                            <li>
-                                <span class="transformation-icon">😫</span>
-                                <span>Posting without knowing what works</span>
-                            </li>
-                            <li>
-                                <span class="transformation-icon">🤷</span>
-                                <span>Data overload without direction</span>
-                            </li>
-                            <li>
-                                <span class="transformation-icon">😩</span>
-                                <span>Working hard but not smart</span>
-                            </li>
-                            <li>
-                                <span class="transformation-icon">📉</span>
-                                <span>Guessing at strategy</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="transformation-arrow">
-                        <span class="arrow-label">With Forj Intel</span>
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </div>
-
-                    <div class="transformation-card after">
-                        <div class="transformation-label">Where you could be</div>
-                        <ul class="transformation-list">
-                            <li>
-                                <span class="transformation-icon">🎯</span>
-                                <span>Predictable, data-driven growth</span>
-                            </li>
-                            <li>
-                                <span class="transformation-icon">📊</span>
-                                <span>AI + coach-backed decisions</span>
-                            </li>
-                            <li>
-                                <span class="transformation-icon">💰</span>
-                                <span>Clear monetization roadmap</span>
-                            </li>
-                            <li>
-                                <span class="transformation-icon">📈</span>
-                                <span>Compound growth trajectory</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="transformation-cta">
-                    <a href="#waitlist" class="btn btn-primary">Get Early Access</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             SECTION 9: SOCIAL PROOF
-             ============================================ -->
-        <section class="social-proof-section">
+        <section class="social-proof-section" id="testimonials">
             <div class="container">
                 <div class="section-header">
                     <h2>What Creators Are Saying</h2>
@@ -711,7 +220,7 @@
                             <div class="author-avatar">AR</div>
                             <div class="author-info">
                                 <span class="author-name">Alex R.</span>
-                                <span class="author-detail">Gaming Creator • 12K → 28K subs</span>
+                                <span class="author-detail">Gaming Creator &bull; 12K &rarr; 28K subs</span>
                             </div>
                         </div>
                     </div>
@@ -724,7 +233,7 @@
                             <div class="author-avatar">SK</div>
                             <div class="author-info">
                                 <span class="author-name">Sarah K.</span>
-                                <span class="author-detail">Tech Reviewer • 8K subs</span>
+                                <span class="author-detail">Tech Reviewer &bull; 8K subs</span>
                             </div>
                         </div>
                     </div>
@@ -737,125 +246,22 @@
                             <div class="author-avatar">MJ</div>
                             <div class="author-info">
                                 <span class="author-name">Marcus J.</span>
-                                <span class="author-detail">Lifestyle Vlogger • 45K subs</span>
+                                <span class="author-detail">Lifestyle Vlogger &bull; 45K subs</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="early-adopter-note">
-                    <span class="early-badge">🚀 Early Access</span>
-                    <p>Be one of our first 100 success stories. Early adopters get priority coaching spots + lifetime discount.</p>
-                </div>
             </div>
         </section>
 
         <!-- ============================================
-             SECTION 10: FAQ
-             ============================================ -->
-        <section class="faq-section" id="faq">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Frequently Asked Questions</h2>
-                </div>
-
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Do I need the paid plan to get coaching?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No! Coaching is available to all users. Free users can book strategy sessions at our standard rate (£85). Pro/Growth members get discounted rates (£65), and Growth members include 1 monthly call in their subscription.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>How is this different from vidIQ/TubeBuddy?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Those tools give you data. We give you data PLUS human expertise. Our coaches use your Forj Intel dashboard in sessions—it's integrated, not separate. We believe data without direction is just noise.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>I'm just starting out. Is this for me?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Absolutely. Our free tier is perfect for new creators. And early-stage is actually the BEST time for a strategy call—before you build bad habits. We'll help you start right.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>What platforms do you support?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Currently we're YouTube-focused—that's where we can provide the deepest analytics and most actionable insights. Twitch, TikTok, and other platform analytics are coming soon.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Can I cancel anytime?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes. No contracts, no commitments. Cancel with one click. We also offer a 14-day money-back guarantee on all paid plans.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>How quickly do I see results?</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-                        </button>
-                        <div class="faq-answer">
-                            <p>The dashboard gives insights immediately upon connecting—you'll understand your channel better within minutes. Growth results vary, but most users report noticeable improvements within 30-60 days of consistent use.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             SECTION 11: FINAL CTA
-             ============================================ -->
-        <section class="final-cta-section">
-            <div class="container">
-                <div class="final-cta-content">
-                    <h2>Ready to Grow Smarter?</h2>
-                    <p>We're in private beta. Join the waitlist to get early access and be one of the first creators using data + coaching to build sustainable YouTube careers.</p>
-
-                    <div class="final-cta-buttons">
-                        <a href="#waitlist" class="btn btn-primary btn-large">
-                            Join the Waitlist
-                            <span class="btn-sub">Get early access</span>
-                        </a>
-                        <a href="https://app.forj.cloud/login" class="btn btn-secondary">
-                            I Have a Code
-                            <span class="btn-sub">Already invited? Sign in</span>
-                        </a>
-                    </div>
-
-                    <p class="final-cta-contact">Questions? Email us: <a href="mailto:hello@forj.cloud">hello@forj.cloud</a></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             CONTACT/BOOKING FORM
+             SECTION 5: BOOKING FORM
              ============================================ -->
         <section id="book" class="contact-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Book Your Call</h2>
-                    <p>Leave your details and we'll get back to you within 24 hours.</p>
+                    <h2>Let's Talk About Your Channel</h2>
+                    <p>15 minutes. No commitment. No pitch. Just honest feedback on your growth strategy.</p>
                 </div>
 
                 <div class="contact-form-card">
@@ -885,7 +291,7 @@
                             <select id="call_type" name="call_type" required>
                                 <option value="">Select an option</option>
                                 <option value="free-discovery">Free 15-min Discovery Call</option>
-                                <option value="strategy-session">£85 Strategy Session (60 min)</option>
+                                <option value="strategy-session">&pound;85 Strategy Session (60 min)</option>
                                 <option value="platform-demo">Platform Demo</option>
                                 <option value="other">Other / Just have questions</option>
                             </select>
@@ -907,47 +313,23 @@
         </section>
 
         <!-- ============================================
-             SECTION 12: FOOTER
+             SECTION 6: FOOTER
              ============================================ -->
         <footer class="footer">
             <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand-col">
+                <div class="footer-row">
+                    <div class="footer-brand-side">
                         <div class="footer-brand">
                             <img src="logo_notext_web.png" alt="Forj Intel" class="footer-logo-img" width="40" height="84">
                             <span class="footer-wordmark">Forj<span>Intel</span></span>
                         </div>
                         <p class="footer-tagline">Helping creators build real businesses.</p>
                     </div>
-
-                    <div class="footer-links-col">
-                        <h3 class="footer-heading">Product</h3>
-                        <ul>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#pricing">Pricing</a></li>
-                            <li><a href="#coaching">Coaching</a></li>
-                            <li><a href="https://app.forj.cloud/login" aria-label="Login to Forj Intel dashboard">Login</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-links-col">
-                        <h3 class="footer-heading">Resources</h3>
-                        <ul>
-                            <li><a href="#faq">FAQ</a></li>
-                            <li><a href="mailto:hello@forj.cloud">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-links-col">
-                        <h3 class="footer-heading">Company</h3>
-                        <ul>
-                            <li><a href="/about.html">About</a></li>
-                            <li><a href="/privacy.html">Privacy Policy</a></li>
-                            <li><a href="/terms.html">Terms of Service</a></li>
-                        </ul>
+                    <div class="footer-links-side">
+                        <a href="https://app.forj.cloud/login">Login</a>
+                        <a href="mailto:hello@forj.cloud">Contact</a>
                     </div>
                 </div>
-
                 <div class="footer-divider"></div>
                 <p class="footer-copyright">&copy; 2026 Forj Intel. All rights reserved.</p>
             </div>
@@ -955,7 +337,7 @@
     </main>
 
     <!-- Visual Effects -->
-    <script src="effects.min.js"></script>
+    <script src="effects.js"></script>
 
     <!-- Navigation & Interactions -->
     <script>
@@ -1014,75 +396,56 @@
                 });
             });
 
-            // FAQ Accordion
-            document.querySelectorAll('.faq-question').forEach(button => {
-                button.addEventListener('click', () => {
-                    const faqItem = button.parentElement;
-                    const answer = faqItem.querySelector('.faq-answer');
-                    const isActive = faqItem.classList.contains('active');
+            // Waitlist inline form toggle
+            const waitlistToggle = document.getElementById('waitlistToggle');
+            const waitlistInlineForm = document.getElementById('waitlistInlineForm');
+            if (waitlistToggle && waitlistInlineForm) {
+                waitlistToggle.addEventListener('click', () => {
+                    waitlistInlineForm.classList.toggle('visible');
+                    if (waitlistInlineForm.classList.contains('visible')) {
+                        const emailInput = waitlistInlineForm.querySelector('input[type="email"]');
+                        if (emailInput) emailInput.focus();
+                    }
+                });
+            }
 
-                    // Close all other FAQs
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        item.classList.remove('active');
-                        item.querySelector('.faq-answer').style.height = '0';
-                    });
-
-                    // Toggle current FAQ
-                    if (!isActive) {
-                        faqItem.classList.add('active');
-                        answer.style.height = answer.scrollHeight + 'px';
+            // Call option buttons: set URL hash and pre-select dropdown
+            document.querySelectorAll('.call-option-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const callType = this.dataset.callType;
+                    if (callType) {
+                        history.replaceState(null, '', '?type=' + callType + '#book');
+                        preselectCallType(callType);
                     }
                 });
             });
-        })();
-    </script>
 
-    <!-- Scroll Animations -->
-    <script>
-        (function() {
-            // Stats Counter Animation
-            const stats = document.querySelectorAll('.stat-number');
-            let statsAnimated = false;
-
-            function animateStats() {
-                if (statsAnimated) return;
-
-                const trustBar = document.querySelector('.trust-bar');
-                if (!trustBar) return;
-
-                const rect = trustBar.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    statsAnimated = true;
-
-                    stats.forEach(stat => {
-                        const target = parseFloat(stat.dataset.target);
-                        const isDecimal = target % 1 !== 0;
-                        const duration = 2000;
-                        const startTime = performance.now();
-
-                        function update(currentTime) {
-                            const elapsed = currentTime - startTime;
-                            const progress = Math.min(elapsed / duration, 1);
-                            const easeOut = 1 - Math.pow(1 - progress, 3);
-                            const current = target * easeOut;
-
-                            stat.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-
-                            if (progress < 1) {
-                                requestAnimationFrame(update);
-                            } else {
-                                stat.textContent = isDecimal ? target.toFixed(1) : target;
-                            }
-                        }
-
-                        requestAnimationFrame(update);
-                    });
+            // Pre-select call type dropdown based on URL params
+            function preselectCallType(type) {
+                const callTypeSelect = document.getElementById('call_type');
+                if (!callTypeSelect) return;
+                for (let i = 0; i < callTypeSelect.options.length; i++) {
+                    if (callTypeSelect.options[i].value === type) {
+                        callTypeSelect.selectedIndex = i;
+                        break;
+                    }
                 }
             }
 
-            // Scroll Reveal Animation
+            // On page load, check for ?type= parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const typeParam = urlParams.get('type');
+            if (typeParam) {
+                preselectCallType(typeParam);
+            }
+        })();
+    </script>
+
+    <!-- Scroll Reveal Animations -->
+    <script>
+        (function() {
             const revealElements = document.querySelectorAll(
-                '.transformation-card, .pricing-card, .testimonial-card, .feature-block, .step-card, .pain-point-card, .solution-card, .coaching-card'
+                '.testimonial-card, .highlight-card, .call-option-card'
             );
 
             function reveal() {
@@ -1092,7 +455,6 @@
                         el.classList.add('revealed');
                     }
                 });
-                animateStats();
             }
 
             // Initial check
@@ -1132,7 +494,7 @@
                         });
 
                         if (response.ok) {
-                            waitlistMessage.textContent = '🎉 You\'re on the list! We\'ll be in touch soon.';
+                            waitlistMessage.textContent = 'You\'re on the list! We\'ll be in touch soon.';
                             waitlistMessage.classList.add('success');
                             waitlistEmail.value = '';
                         } else {
