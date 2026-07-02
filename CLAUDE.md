@@ -23,7 +23,7 @@ No build, lint, or test commands - this is a static site that runs directly in t
 ## Architecture
 
 - **index.html**: Main landing page with hero (call CTA + platform waitlist), highlights, topics, platform feature list, call options, booking form, and testimonials sections
-- **styles.css**: All styling using CSS custom properties (`:root` variables for theming). Cool blue-black background (`--brand-charcoal`, hue ~230) with vivid orange (`--brand-amber`) accents; Qaranta display font for headings, DM Sans for body. Keep dark surfaces cold — warm darks mixed with orange read as brown
+- **styles.css**: All styling using CSS custom properties (`:root` variables for theming). Carbon-dark background (`--brand-charcoal`, hue ~225) with a single signal orange (`--brand-orange` #FF5C00, bright `--brand-orange-bright` #FF7A2E for hovers/glows, deep `--brand-ember` #D94A00 for gradient ends). One hue only — green/red are functional (success/error), never decorative. DM Sans for all headings and body; Qaranta is reserved for the wordmark (nav logo, hero brand name, footer). Keep dark surfaces cold — warm darks mixed with orange read as brown
 - **effects.js**: Visual effects module containing `ParticleSystem` class for floating background particles and cursor interaction effects. Uses canvas rendering
 - **thank-you.html**: Fallback page for non-AJAX form submissions
 - **themes.js** and **effects.min.js** are not referenced by any page (legacy files)

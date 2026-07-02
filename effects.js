@@ -9,8 +9,8 @@
     // Theme colors (vivid orange palette — keep saturation high so
     // particles read as embers, not brown specks)
     const COLORS = {
-        amber: { h: 36, s: 100, l: 55 },
-        orange: { h: 22, s: 100, l: 55 }
+        amber: { h: 22, s: 100, l: 59 },
+        orange: { h: 22, s: 100, l: 50 }
     };
 
     // ============================================
@@ -198,7 +198,7 @@
                 const glow = 20 + Math.sin(time) * 8;
 
                 if (accentSpan) {
-                    accentSpan.style.textShadow = `0 0 ${glow}px rgba(255, 163, 26, 0.5)`;
+                    accentSpan.style.textShadow = `0 0 ${glow}px rgba(255, 92, 0, 0.5)`;
                 }
 
                 requestAnimationFrame(loop);
