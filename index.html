@@ -43,6 +43,7 @@
                     <span class="nav-logo-text">Forj<span class="nav-logo-accent">Intel</span></span>
                 </a>
                 <div class="nav-links">
+                    <a href="#platform">Platform</a>
                     <a href="#call-options">Coaching</a>
                     <a href="#book" class="btn btn-primary btn-sm">Book a Call</a>
                 </div>
@@ -63,6 +64,7 @@
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
+            <a href="#platform">Platform</a>
             <a href="#call-options">Coaching</a>
             <a href="#book" class="btn btn-primary">Book a Call</a>
         </div>
@@ -88,8 +90,9 @@
                             </div>
 
                             <div class="hero-aside">
-                                <p class="hero-aside-kicker">Private beta</p>
-                                <p class="hero-aside-copy">For creators who want sharper decisions, not more noise.</p>
+                                <p class="hero-aside-kicker">Why creators join</p>
+                                <p class="hero-aside-copy">Sharper decisions, not more noise. Data plus a real
+                                    strategist in your corner.</p>
                             </div>
                         </div>
                         <div class="hero-content-column">
@@ -106,7 +109,8 @@
 
                             <div class="hero-proof-list" aria-label="What you get from Forj Intel">
                                 <span class="hero-proof-pill">Spot winning formats faster</span>
-                                <span class="hero-proof-pill">Get 1:1 guidance from a real strategist</span>
+                                <span class="hero-proof-pill">1:1 guidance from a strategist with 10 years on
+                                    YouTube</span>
                                 <span class="hero-proof-pill">Leave every session with a clear next move</span>
                             </div>
 
@@ -117,7 +121,7 @@
                             <div class="hero-waitlist-block">
                                 <div class="hero-waitlist-divider">
                                     <span class="hero-or-line"></span>
-                                    <span class="hero-or">or join the waitlist</span>
+                                    <span class="hero-or">or join the platform waitlist</span>
                                     <span class="hero-or-line"></span>
                                 </div>
                                 <div class="waitlist-inline-form visible" id="waitlistInlineForm">
@@ -136,17 +140,8 @@
                                         <div id="waitlistMessage" class="waitlist-message"></div>
                                     </form>
                                 </div>
-                                <p class="hero-waitlist-note">Only your email. No long application.</p>
-                            </div>
-
-                            <div class="credibility-bar">
-                                <span class="credibility-item beta-badge">
-                                    <strong>Private Beta</strong>
-                                </span>
-                                <span class="credibility-divider"></span>
-                                <span class="credibility-item">
-                                    <strong>10 years</strong> experience
-                                </span>
+                                <p class="hero-waitlist-note">Be first in when the analytics beta opens. Only your
+                                    email &mdash; no application.</p>
                             </div>
                         </div>
                     </div>
@@ -234,7 +229,7 @@
             <section class="topics-section" id="topics">
                 <div class="container">
                     <div class="section-header section-header-left">
-                        <p class="section-kicker">What we help you master</p>
+                        <p class="section-kicker">Focus areas</p>
                         <h2>What We Help You Master</h2>
                         <p>Every feature in the platform and every coaching session is built around the topics that
                             actually move the needle.</p>
@@ -401,7 +396,7 @@
             <section class="call-options-section" id="call-options">
                 <div class="container">
                     <div class="section-header section-header-left">
-                        <p class="section-kicker">Choose your starting point</p>
+                        <p class="section-kicker">Work with us</p>
                         <h2>Choose Your Starting Point</h2>
                         <p>Start with a free fit-check, or book a deeper strategy session if you already know you want
                             focused guidance.</p>
@@ -422,9 +417,9 @@
                             <span class="call-type-label">Strategy Session</span>
                             <div class="call-price">&pound;30</div>
                             <div class="call-duration">30 minutes</div>
-                            <p class="call-description">Deep dive discussion around your channel with our marketing
-                                lead. Discussion will cover your content, highlighting unique USPs to prioritise for
-                                growth and engagement as well as opportunities for growth.</p>
+                            <p class="call-description">A 30-minute deep dive on your channel with our marketing
+                                lead: what makes your content unique, what to prioritise, and where your biggest
+                                growth opportunities are.</p>
                             <a href="#book" class="btn btn-primary btn-full call-option-btn"
                                 data-call-type="strategy-session">Book Strategy Session</a>
                         </div>
@@ -697,27 +692,36 @@
             })();
         </script>
 
-        <!-- Scroll Reveal Animations -->
+        <!-- Scroll Reveal Animations (progressive enhancement: content stays visible without JS) -->
         <script>
             (function () {
                 const revealElements = document.querySelectorAll(
                     '.testimonial-card, .highlight-card, .call-option-card, .topic-card'
                 );
 
-                function reveal() {
-                    revealElements.forEach(el => {
-                        const rect = el.getBoundingClientRect();
-                        if (rect.top < window.innerHeight * 0.85) {
-                            el.classList.add('revealed');
-                        }
-                    });
+                if (!('IntersectionObserver' in window) ||
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
                 }
 
-                // Initial check
-                reveal();
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '0px 0px -10% 0px' });
 
-                // Listen for scroll
-                window.addEventListener('scroll', reveal, { passive: true });
+                revealElements.forEach(el => {
+                    // Only hide elements below the fold; anything already visible stays visible
+                    if (el.getBoundingClientRect().top > window.innerHeight * 0.85) {
+                        el.classList.add('will-reveal');
+                        observer.observe(el);
+                    } else {
+                        el.classList.add('revealed');
+                    }
+                });
             })();
         </script>
 

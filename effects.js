@@ -6,10 +6,11 @@
 (function() {
     'use strict';
 
-    // Theme colors (amber/warm palette)
+    // Theme colors (vivid orange palette — keep saturation high so
+    // particles read as embers, not brown specks)
     const COLORS = {
-        amber: { h: 38, s: 92, l: 50 },
-        orange: { h: 25, s: 95, l: 53 }
+        amber: { h: 36, s: 100, l: 55 },
+        orange: { h: 22, s: 100, l: 55 }
     };
 
     // ============================================
@@ -197,7 +198,7 @@
                 const glow = 20 + Math.sin(time) * 8;
 
                 if (accentSpan) {
-                    accentSpan.style.textShadow = `0 0 ${glow}px rgba(245, 158, 11, 0.5)`;
+                    accentSpan.style.textShadow = `0 0 ${glow}px rgba(255, 163, 26, 0.5)`;
                 }
 
                 requestAnimationFrame(loop);
