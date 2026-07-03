@@ -15,20 +15,9 @@
    CSS VARIABLES
    ============================================ */
 :root {
-    /* Surface colors (HSL triplets - use with hsl())
-       Carbon neutrals with a cool blue undertone: warm darks mixed with
-       orange read as brown, so the dark side stays cold to keep the
-       signal orange vivid. */
-    --background: 225 15% 5%;
-    --foreground: 220 16% 96%;
-    --card: 225 17% 9%;
-    --card-foreground: 220 16% 96%;
-    --muted: 222 14% 14%;
-    --muted-foreground: 219 11% 64%;
-    --border: 220 15% 19%;
-    --input: 225 15% 11%;
-
-    /* Brand colors (HSL triplets) - one hue, three intensities */
+    /* Brand colors (HSL triplets) - one hue, three intensities.
+       Shared across light/dark: mid-toned enough to read on both a near-black
+       and a white surface, so only the surface/neutral tokens below flip. */
     --accent: 22 100% 50%;
     --accent-bright: 22 100% 59%;
     --accent-dark: 20 100% 43%;
@@ -37,16 +26,85 @@
     --danger-bright: 0 89% 65%;
     --success: 148 60% 47%;
 
-    /* Brand colors (hex - for direct use) */
+    /* Brand colors (hex - for direct use). Shared across themes. */
     --brand-charcoal: #0B0C0F;
     --brand-orange: #FF5C00;
     --brand-orange-bright: #FF7A2E;
     --brand-ember: #D94A00;
 
+    /* Positive-signal green (functional, not decorative): growth, gains, "free".
+       Orange stays the brand/CTA hue; green only marks good outcomes. */
+    --brand-green: #2FBF71;
+    --brand-green-bright: #4FD98C;
+
     /* Misc */
     --ring: 22 100% 50%;
     --radius: 0.625rem;
 }
+
+/* Dark theme (default surface). Carbon neutrals with a cool blue undertone:
+   warm darks mixed with orange read as brown, so the dark side stays cold
+   to keep the signal orange vivid. */
+:root,
+[data-theme="dark"] {
+    --background: 225 15% 5%;
+    --foreground: 220 16% 96%;
+    --card: 225 17% 9%;
+    --card-foreground: 220 16% 96%;
+    --muted: 222 14% 14%;
+    --muted-foreground: 219 11% 64%;
+    /* Secondary body-copy tier, between --foreground and --muted-foreground */
+    --foreground-secondary: 220 14% 80%;
+    --border: 220 15% 19%;
+    /* Hairline separators - decoupled from --border (see light block) */
+    --divider: 220 15% 19%;
+    --input: 225 15% 11%;
+    /* Color channel for glass highlight/vignette overlays - each usage keeps
+       its own alpha, only the underlying tint (white vs black) flips */
+    --sheen-tint: 0 0% 100%;
+    --btn-ripple-color: 0 0% 100% / 0.4;
+}
+
+[data-theme="light"] {
+    --background: 30 20% 98%;
+    --foreground: 222 20% 14%;
+    --card: 30 25% 100%;
+    --card-foreground: 222 20% 14%;
+    --muted: 30 15% 94%;
+    --muted-foreground: 219 10% 42%;
+    --foreground-secondary: 222 12% 32%;
+    --border: 220 13% 82%;
+    /* Lower-contrast than --border - hairline dividers need to stay subtle */
+    --divider: 220 13% 88%;
+    --input: 220 15% 92%;
+    /* A light gloss on a dark surface reads as a faint dark sheen instead,
+       simulating a subtle inset shadow, once the base surface is light */
+    --sheen-tint: 0 0% 0%;
+    --btn-ripple-color: 0 0% 100% / 0.4;
+}
+
+/* Pre-JS fallback: honor OS preference on first paint / no-JS, before the
+   inline theme script can set data-theme explicitly. */
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]):not([data-theme="light"]) {
+        --background: 30 20% 98%;
+        --foreground: 222 20% 14%;
+        --card: 30 25% 100%;
+        --card-foreground: 222 20% 14%;
+        --muted: 30 15% 94%;
+        --muted-foreground: 219 10% 42%;
+        --foreground-secondary: 222 12% 32%;
+        --border: 220 13% 82%;
+        --divider: 220 13% 88%;
+        --input: 220 15% 92%;
+        --sheen-tint: 0 0% 0%;
+    }
+}
+
+/* Section background washes (below): a black darkening overlay reads far
+   stronger on a light surface than on near-black at the same alpha, so
+   these are softened explicitly for light mode rather than left to invert
+   automatically. Selectors/values mirror the section rules further down. */
 
 /* ============================================
    RESET & BASE
@@ -104,8 +162,8 @@ h1, h2, h3, h4, h5, h6,
 
 body {
     margin: 0;
-    background-color: var(--brand-charcoal);
-    color: #fff;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
 }
 
 img, svg, video {
@@ -247,7 +305,7 @@ img, svg, video {
 .btn-ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
+    background: hsl(var(--btn-ripple-color));
     transform: scale(0);
     animation: ripple 0.6s ease-out;
     pointer-events: none;
@@ -430,6 +488,116 @@ img, svg, video {
     transition: all 0.3s ease;
 }
 
+/* Theme switcher (desktop) */
+.theme-switcher {
+    position: relative;
+}
+
+.theme-switcher-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: none;
+    border: 1px solid hsl(var(--divider));
+    border-radius: 999px;
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-switcher-trigger:hover {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+}
+
+.theme-icon { display: none; }
+[data-theme-mode="light"] .theme-icon-light,
+[data-theme-mode="dark"] .theme-icon-dark,
+[data-theme-mode="system"] .theme-icon-system {
+    display: block;
+}
+
+.theme-switcher-menu {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    min-width: 10rem;
+    padding: 0.4rem;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.9rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index: 1001;
+}
+
+.theme-switcher.open .theme-switcher-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.theme-switcher-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    background: none;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.theme-switcher-option:hover {
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+}
+
+[data-theme-mode="light"] .theme-switcher-option[data-theme-choice="light"],
+[data-theme-mode="dark"] .theme-switcher-option[data-theme-choice="dark"],
+[data-theme-mode="system"] .theme-switcher-option[data-theme-choice="system"] {
+    color: var(--brand-orange);
+    font-weight: 600;
+}
+
+/* Theme switcher (mobile menu) */
+.mobile-theme-switcher {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.mobile-theme-option {
+    padding: 0.5rem 1.1rem;
+    background: none;
+    border: 1px solid hsl(var(--divider));
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme-mode="light"] .mobile-theme-option[data-theme-choice="light"],
+[data-theme-mode="dark"] .mobile-theme-option[data-theme-choice="dark"],
+[data-theme-mode="system"] .mobile-theme-option[data-theme-choice="system"] {
+    border-color: var(--brand-orange);
+    color: var(--brand-orange);
+}
+
 /* Mobile Menu */
 .mobile-menu {
     display: none;
@@ -527,12 +695,12 @@ img, svg, video {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
-    color: #fff;
+    color: hsl(var(--foreground));
 }
 
 .section-header p {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     max-width: 500px;
     margin: 0 auto;
     line-height: 1.7;
@@ -562,8 +730,8 @@ img, svg, video {
     background:
         radial-gradient(ellipse 44% 58% at 18% 28%, rgba(255, 92, 0, 0.11) 0%, transparent 62%),
         radial-gradient(ellipse 52% 46% at 82% 18%, rgba(255, 92, 0, 0.08) 0%, transparent 58%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(0, 0, 0, 0.08) 100%),
-        var(--brand-charcoal);
+        linear-gradient(180deg, hsl(var(--sheen-tint) / 0.015) 0%, rgba(0, 0, 0, 0.08) 100%),
+        hsl(var(--background));
 }
 
 .hero-container {
@@ -598,8 +766,8 @@ img, svg, video {
     padding: 0.9rem 1rem;
     border: 1px solid rgba(255, 92, 0, 0.16);
     border-radius: 1.5rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: linear-gradient(180deg, hsl(var(--sheen-tint) / 0.03) 0%, hsl(var(--sheen-tint) / 0.01) 100%);
+    box-shadow: inset 0 1px 0 hsl(var(--sheen-tint) / 0.05);
 }
 
 .hero-logo-img {
@@ -616,7 +784,7 @@ img, svg, video {
     font-family: 'Qaranta', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
     font-size: 1.55rem;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.92);
+    color: hsl(var(--foreground));
 }
 
 .hero-brand-name span {
@@ -625,7 +793,7 @@ img, svg, video {
 
 .hero-brand-tagline {
     margin: 0.6rem 0 0;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     line-height: 1.7;
     font-size: 0.9rem;
 }
@@ -633,7 +801,7 @@ img, svg, video {
 .hero-aside {
     max-width: 14rem;
     padding-left: 1rem;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 1px solid hsl(var(--divider));
 }
 
 .hero-aside-kicker {
@@ -647,7 +815,7 @@ img, svg, video {
 
 .hero-aside-copy {
     margin: 0;
-    color: rgba(255, 255, 255, 0.48);
+    color: hsl(var(--muted-foreground));
     line-height: 1.75;
     font-size: 0.9rem;
 }
@@ -691,7 +859,7 @@ img, svg, video {
 
 .hero-description {
     font-size: 1.14rem;
-    color: rgba(255, 255, 255, 0.72);
+    color: hsl(var(--foreground-secondary));
     line-height: 1.85;
     max-width: 42rem;
     margin: 0;
@@ -712,7 +880,7 @@ img, svg, video {
     border: none;
     border-radius: 0;
     background: transparent;
-    color: rgba(255, 255, 255, 0.7);
+    color: hsl(var(--foreground-secondary));
     font-size: 0.9rem;
     line-height: 1.5;
     position: relative;
@@ -726,8 +894,8 @@ img, svg, video {
     width: 0.42rem;
     height: 0.42rem;
     border-radius: 50%;
-    background: var(--brand-orange);
-    box-shadow: 0 0 10px rgba(255, 92, 0, 0.22);
+    background: var(--brand-green);
+    box-shadow: 0 0 10px rgba(47, 191, 113, 0.3);
 }
 
 .hero-cta {
@@ -753,7 +921,7 @@ img, svg, video {
     padding: 1.15rem 1.2rem 1rem;
     border: 1px solid rgba(255, 92, 0, 0.14);
     border-radius: 1.4rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.012) 100%);
+    background: linear-gradient(180deg, hsl(var(--sheen-tint) / 0.03) 0%, hsl(var(--sheen-tint) / 0.012) 100%);
 }
 
 .hero-waitlist-divider {
@@ -767,12 +935,12 @@ img, svg, video {
 .hero-or-line {
     flex: 1;
     height: 1px;
-    background: rgba(255, 255, 255, 0.15);
+    background: hsl(var(--divider));
 }
 
 .hero-or {
     font-size: 0.74rem;
-    color: rgba(255, 255, 255, 0.46);
+    color: hsl(var(--muted-foreground));
     white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: 0.12em;
@@ -800,10 +968,10 @@ img, svg, video {
     padding: 0.9rem 1rem;
     font-size: 0.92rem;
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-    background: rgba(0, 0, 0, 0.28);
+    background: hsl(var(--input));
     border: 1px solid rgba(255, 92, 0, 0.28);
     border-radius: 0.9rem;
-    color: #fff;
+    color: hsl(var(--foreground));
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -814,7 +982,7 @@ img, svg, video {
 }
 
 .waitlist-input-group input[type="email"]::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: hsl(var(--muted-foreground));
 }
 
 .waitlist-input-group .btn {
@@ -827,7 +995,7 @@ img, svg, video {
 .hero-waitlist-note {
     margin: 0.7rem 0 0;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.42);
+    color: hsl(var(--muted-foreground));
 }
 
 .waitlist-message {
@@ -837,7 +1005,7 @@ img, svg, video {
     min-height: 1.5rem;
 }
 
-.waitlist-message.success { color: #2FBF71; }
+.waitlist-message.success { color: var(--brand-green); }
 .waitlist-message.error { color: #F23D3D; }
 
 @media (max-width: 768px) {
@@ -905,7 +1073,7 @@ img, svg, video {
 .highlights-section {
     padding: 5.5rem 1rem;
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(0, 0, 0, 0.16) 100%);
+        linear-gradient(180deg, hsl(var(--sheen-tint) / 0.015) 0%, rgba(0, 0, 0, 0.16) 100%);
     counter-reset: highlight;
 }
 
@@ -933,7 +1101,7 @@ img, svg, video {
 
 .highlight-card {
     padding: 2rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.015) 100%);
+    background: linear-gradient(180deg, hsl(var(--sheen-tint) / 0.035) 0%, hsl(var(--sheen-tint) / 0.015) 100%);
     border: 1px solid rgba(255, 92, 0, 0.16);
     border-radius: 18px;
     text-align: left;
@@ -960,7 +1128,7 @@ img, svg, video {
     right: 1.3rem;
     font-size: 0.74rem;
     letter-spacing: 0.12em;
-    color: rgba(255, 255, 255, 0.28);
+    color: hsl(var(--muted-foreground));
 }
 
 .highlight-icon {
@@ -979,13 +1147,13 @@ img, svg, video {
 .highlight-card h3 {
     font-size: 1.125rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.95);
+    color: hsl(var(--foreground));
     margin-bottom: 0.5rem;
 }
 
 .highlight-card p {
     font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.55);
+    color: hsl(var(--foreground-secondary));
     line-height: 1.6;
     margin: 0;
 }
@@ -1017,8 +1185,8 @@ img, svg, video {
     align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: hsl(var(--sheen-tint) / 0.02);
+    border: 1px solid hsl(var(--divider));
     border-radius: 12px;
     transition: border-color 0.3s ease;
 }
@@ -1035,20 +1203,20 @@ img, svg, video {
 
 .pain-text {
     font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--foreground-secondary));
     line-height: 1.6;
     margin: 0;
 }
 
 .pain-text strong {
-    color: rgba(255, 255, 255, 0.9);
+    color: hsl(var(--foreground));
     font-weight: 600;
 }
 
 .pain-punchline {
     text-align: center;
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     line-height: 1.7;
     margin: 0;
 }
@@ -1083,7 +1251,7 @@ img, svg, video {
     padding: 1.5rem 0 0;
     background: transparent;
     border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid hsl(var(--divider));
     border-radius: 0;
     transition: all 0.6s ease;
 }
@@ -1118,13 +1286,13 @@ img, svg, video {
 .topic-card h3 {
     font-size: 1.0625rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.95);
+    color: hsl(var(--foreground));
     margin-bottom: 0.5rem;
 }
 
 .topic-card p {
     font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     line-height: 1.6;
     margin: 0;
 }
@@ -1163,7 +1331,7 @@ img, svg, video {
     column-gap: 1rem;
     row-gap: 0.15rem;
     padding: 0.875rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid hsl(var(--divider));
 }
 
 .platform-feature:last-child { border-bottom: none; }
@@ -1186,27 +1354,27 @@ img, svg, video {
 
 .platform-feature.coming .platform-status-dot,
 .legend-item.coming .platform-status-dot {
-    background: rgba(255, 255, 255, 0.25);
+    background: hsl(var(--muted-foreground));
 }
 
 .platform-feature-name {
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: hsl(var(--foreground));
     font-size: 0.95rem;
 }
 
 .platform-feature.coming .platform-feature-name {
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
 }
 
 .platform-feature-desc {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: hsl(var(--muted-foreground));
     grid-column: 2;
 }
 
 .platform-feature.coming .platform-feature-desc {
-    color: rgba(255, 255, 255, 0.25);
+    color: hsl(var(--muted-foreground));
 }
 
 .platform-legend {
@@ -1221,7 +1389,7 @@ img, svg, video {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -1235,7 +1403,7 @@ img, svg, video {
    ============================================ */
 .call-options-section {
     padding: 5.5rem 1rem;
-    background: rgba(255, 255, 255, 0.015);
+    background: hsl(var(--sheen-tint) / 0.015);
 }
 
 .call-options-grid {
@@ -1255,7 +1423,7 @@ img, svg, video {
 
 .call-option-card {
     padding: 2.5rem 2rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.028) 0%, rgba(255, 255, 255, 0.015) 100%);
+    background: linear-gradient(180deg, hsl(var(--sheen-tint) / 0.028) 0%, hsl(var(--sheen-tint) / 0.015) 100%);
     border: 1px solid rgba(255, 92, 0, 0.15);
     border-radius: 18px;
     text-align: left;
@@ -1275,24 +1443,25 @@ img, svg, video {
 .call-option-card:nth-child(1) { transition-delay: 0s; }
 .call-option-card:nth-child(2) { transition-delay: 0.15s; }
 
+/* Free call = a genuine no-cost win, so it carries the positive green accent */
 .call-option-free {
-    border-color: rgba(255, 92, 0, 0.28);
-    background: linear-gradient(180deg, rgba(255, 92, 0, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%);
+    border-color: rgba(47, 191, 113, 0.28);
+    background: linear-gradient(180deg, rgba(47, 191, 113, 0.08) 0%, hsl(var(--sheen-tint) / 0.015) 100%);
 }
 
 .call-option-free:hover {
-    border-color: rgba(255, 92, 0, 0.52);
-    box-shadow: 0 8px 40px rgba(255, 92, 0, 0.12);
+    border-color: rgba(47, 191, 113, 0.52);
+    box-shadow: 0 8px 40px rgba(47, 191, 113, 0.14);
 }
 
 .call-option-free .call-type-label {
     color: var(--brand-charcoal);
-    background: var(--brand-orange);
-    border-color: rgba(255, 92, 0, 0.4);
+    background: var(--brand-green);
+    border-color: rgba(47, 191, 113, 0.4);
 }
 
 .call-option-free .call-price {
-    color: var(--brand-orange);
+    color: var(--brand-green);
 }
 
 .call-type-label {
@@ -1312,19 +1481,19 @@ img, svg, video {
     font-size: 3rem;
     letter-spacing: -0.03em;
     font-weight: 700;
-    color: #fff;
+    color: hsl(var(--foreground));
     margin-top: 0.75rem;
 }
 
 .call-duration {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     margin-bottom: 0.5rem;
 }
 
 .call-description {
     font-size: 1rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--foreground-secondary));
     line-height: 1.7;
     margin: 0 0 1.25rem 0;
     max-width: 320px;
@@ -1359,7 +1528,7 @@ img, svg, video {
 }
 
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.02);
+    background: hsl(var(--sheen-tint) / 0.02);
     border: 1px solid rgba(255, 92, 0, 0.15);
     border-radius: 16px;
     padding: 2rem;
@@ -1378,7 +1547,7 @@ img, svg, video {
 .testimonial-card blockquote {
     font-size: 1rem;
     font-style: italic;
-    color: rgba(255, 255, 255, 0.8);
+    color: hsl(var(--foreground-secondary));
     line-height: 1.7;
     margin: 0 0 1.5rem 0;
     position: relative;
@@ -1422,12 +1591,18 @@ img, svg, video {
 
 .author-name {
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: hsl(var(--foreground));
 }
 
 .author-detail {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
+}
+
+/* Upward growth numbers read as positive — tint them green */
+.growth-stat {
+    color: var(--brand-green-bright);
+    font-weight: 600;
 }
 
 /* Subtle testimonials (below form) */
@@ -1438,7 +1613,7 @@ img, svg, video {
 
 .social-proof-subtle .section-header h2 {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--foreground-secondary));
 }
 
 .social-proof-subtle .section-kicker {
@@ -1446,13 +1621,77 @@ img, svg, video {
 }
 
 .social-proof-subtle .testimonial-card {
-    border-color: rgba(255, 255, 255, 0.06);
-    background: rgba(255, 255, 255, 0.01);
+    border-color: hsl(var(--divider));
+    background: hsl(var(--sheen-tint) / 0.01);
 }
 
 .social-proof-subtle .testimonial-card blockquote {
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--foreground-secondary));
     font-size: 0.9375rem;
+}
+
+/* ============================================
+   ABOUT US (Founders note)
+   ============================================ */
+.founders-section {
+    padding: 5rem 1rem 6rem;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.founders-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.founders-inner .section-header {
+    margin-bottom: 2rem;
+}
+
+.founders-avatars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.founders-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brand-orange) 0%, var(--brand-ember) 100%);
+    border: 3px solid hsl(var(--background));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--brand-charcoal);
+}
+
+.founders-avatar+.founders-avatar {
+    margin-left: -0.75rem;
+    background: linear-gradient(135deg, var(--brand-orange-bright) 0%, var(--brand-orange) 100%);
+}
+
+.founders-prose p {
+    color: hsl(var(--foreground-secondary));
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.founders-prose p:last-child {
+    margin-bottom: 0;
+}
+
+.founders-highlight {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+}
+
+.founders-signature {
+    margin-top: 2rem;
+    font-weight: 600;
+    color: var(--brand-orange);
 }
 
 /* ============================================
@@ -1470,7 +1709,7 @@ img, svg, video {
     max-width: 1080px;
     margin: 0 auto;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid hsl(var(--divider));
 }
 
 .contact-copy {
@@ -1482,7 +1721,7 @@ img, svg, video {
     font-size: clamp(2.4rem, 4vw, 3.6rem);
     line-height: 1.05;
     letter-spacing: -0.03em;
-    color: #fff;
+    color: hsl(var(--foreground));
     margin-bottom: 1rem;
     max-width: 10ch;
 }
@@ -1492,7 +1731,7 @@ img, svg, video {
     margin: 0 0 1.5rem;
     font-size: 1.0625rem;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.68);
+    color: hsl(var(--foreground-secondary));
 }
 
 .contact-promise-card {
@@ -1500,8 +1739,8 @@ img, svg, video {
     padding: 1.35rem 1.4rem;
     border: 1px solid rgba(255, 92, 0, 0.18);
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255, 92, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.08) 0%, hsl(var(--sheen-tint) / 0.02) 100%);
+    box-shadow: inset 0 1px 0 hsl(var(--sheen-tint) / 0.04);
 }
 
 .contact-promise-title {
@@ -1523,27 +1762,29 @@ img, svg, video {
 
 .contact-promise-list li {
     position: relative;
-    padding-left: 1.4rem;
-    color: rgba(255, 255, 255, 0.82);
+    padding-left: 1.6rem;
+    color: hsl(var(--foreground-secondary));
     line-height: 1.6;
 }
 
+/* Green check = a positive thing you'll walk away with */
 .contact-promise-list li::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0.55rem;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--brand-orange);
-    box-shadow: 0 0 12px rgba(255, 92, 0, 0.35);
+    left: 0.15rem;
+    top: 0.32rem;
+    width: 0.34rem;
+    height: 0.62rem;
+    border: solid var(--brand-green);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 0 6px rgba(47, 191, 113, 0.4));
 }
 
 .contact-mini-proof {
     margin: 1rem 0 0;
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.48);
+    color: hsl(var(--muted-foreground));
 }
 
 .contact-form-card {
@@ -1572,14 +1813,14 @@ img, svg, video {
 .contact-form label {
     font-size: 0.875rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: hsl(var(--foreground));
 }
 
 .contact-form .required { color: hsl(var(--danger)); }
 
 .contact-form .optional {
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.4);
+    color: hsl(var(--muted-foreground));
     font-size: 0.75rem;
 }
 
@@ -1589,15 +1830,15 @@ img, svg, video {
     padding: 0.875rem 1rem;
     font-size: 1rem;
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: hsl(var(--input));
+    border: 1px solid hsl(var(--divider));
     border-radius: 8px;
-    color: #fff;
+    color: hsl(var(--foreground));
     transition: all 0.3s ease;
 }
 
 .contact-form input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: hsl(var(--muted-foreground));
 }
 
 .contact-form input:focus {
@@ -1611,10 +1852,10 @@ img, svg, video {
     padding: 0.875rem 1rem;
     font-size: 1rem;
     font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: hsl(var(--input));
+    border: 1px solid hsl(var(--divider));
     border-radius: 8px;
-    color: #fff;
+    color: hsl(var(--foreground));
     transition: all 0.3s ease;
     cursor: pointer;
     appearance: none;
@@ -1631,8 +1872,8 @@ img, svg, video {
 }
 
 .contact-form select option {
-    background: var(--brand-charcoal);
-    color: #fff;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
 }
 
 .contact-form .btn-full {
@@ -1645,7 +1886,7 @@ img, svg, video {
 .form-note {
     text-align: center;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: hsl(var(--muted-foreground));
     margin: 0;
 }
 
@@ -1698,7 +1939,7 @@ img, svg, video {
    FOOTER (simplified single row)
    ============================================ */
 .footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid hsl(var(--divider));
     padding: 2rem 1rem;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -1743,14 +1984,14 @@ img, svg, video {
     font-family: 'Qaranta', ui-sans-serif, system-ui, sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.9);
+    color: hsl(var(--foreground));
 }
 
 .footer-wordmark span { color: var(--brand-orange); }
 
 .footer-tagline {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     margin: 0;
 }
 
@@ -1761,7 +2002,7 @@ img, svg, video {
 }
 
 .footer-links-side a {
-    color: rgba(255, 255, 255, 0.5);
+    color: hsl(var(--muted-foreground));
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
@@ -1773,7 +2014,7 @@ img, svg, video {
 .footer-divider {
     width: 60px;
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
+    background: hsl(var(--divider));
     margin: 0 auto 1rem;
 }
 
@@ -1787,7 +2028,7 @@ img, svg, video {
 
 .footer-copyright {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: hsl(var(--muted-foreground));
     margin: 0;
 }
 
@@ -1798,13 +2039,13 @@ img, svg, video {
 
 .footer-legal a {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.3);
+    color: hsl(var(--muted-foreground));
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .footer-legal a:hover {
-    color: rgba(255, 255, 255, 0.6);
+    color: hsl(var(--foreground-secondary));
 }
 
 /* ============================================
@@ -1891,4 +2132,47 @@ img, svg, video {
     }
 
     .particle-canvas { display: none; }
+}
+
+/* ============================================
+   LIGHT-MODE SECTION WASH OVERRIDES
+   A black darkening overlay reads far stronger on a light surface than on
+   near-black at the same alpha, so these are softened explicitly rather
+   than left to invert automatically. Mirrors the section rules above.
+   ============================================ */
+[data-theme="light"] .hero-section {
+    background:
+        radial-gradient(ellipse 44% 58% at 18% 28%, rgba(255, 92, 0, 0.11) 0%, transparent 62%),
+        radial-gradient(ellipse 52% 46% at 82% 18%, rgba(255, 92, 0, 0.08) 0%, transparent 58%),
+        linear-gradient(180deg, hsl(var(--sheen-tint) / 0.015) 0%, rgba(0, 0, 0, 0.025) 100%),
+        hsl(var(--background));
+}
+
+[data-theme="light"] .highlights-section {
+    background:
+        linear-gradient(180deg, hsl(var(--sheen-tint) / 0.015) 0%, rgba(0, 0, 0, 0.04) 100%);
+}
+
+[data-theme="light"] .platform-section {
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.035) 0%, rgba(0, 0, 0, 0.035) 100%);
+}
+
+[data-theme="light"] .platform-features {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .social-proof-section {
+    background: rgba(0, 0, 0, 0.045);
+}
+
+[data-theme="light"] .founders-section {
+    background: rgba(0, 0, 0, 0.045);
+}
+
+[data-theme="light"] .contact-form-card {
+    background: linear-gradient(135deg, hsl(var(--accent) / 0.08) 0%, rgba(0, 0, 0, 0.06) 100%);
+}
+
+[data-theme="light"] .footer {
+    background: rgba(0, 0, 0, 0.05);
 }

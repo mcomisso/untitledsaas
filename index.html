@@ -3,6 +3,27 @@
 
     <head>
         <meta charset="UTF-8">
+        <script>
+        (function () {
+            try {
+                var KEY = 'forj-landing-theme';
+                var stored = localStorage.getItem(KEY); // "light" | "dark" | "system" | null
+                var mode = stored || 'system';
+                var resolved;
+                if (mode === 'system') {
+                    resolved = (typeof window.matchMedia === 'function')
+                        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                        : 'dark'; // matchMedia unavailable - fall back to dark
+                } else {
+                    resolved = mode;
+                }
+                document.documentElement.setAttribute('data-theme', resolved);
+                document.documentElement.setAttribute('data-theme-mode', mode);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
         <meta http-equiv="Pragma" content="no-cache">
@@ -44,6 +65,43 @@
                 </a>
                 <div class="nav-links">
                     <a href="#call-options">Coaching</a>
+                    <div class="theme-switcher">
+                        <button type="button" class="theme-switcher-trigger" aria-label="Toggle theme" aria-haspopup="true" aria-expanded="false">
+                            <svg class="theme-icon theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <line x1="12" y1="2" x2="12" y2="4"></line>
+                                <line x1="12" y1="20" x2="12" y2="22"></line>
+                                <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                                <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+                                <line x1="2" y1="12" x2="4" y2="12"></line>
+                                <line x1="20" y1="12" x2="22" y2="12"></line>
+                                <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+                                <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+                            </svg>
+                            <svg class="theme-icon theme-icon-dark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+                            </svg>
+                            <svg class="theme-icon theme-icon-system" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="14" rx="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </button>
+                        <div class="theme-switcher-menu" role="menu">
+                            <button type="button" class="theme-switcher-option" data-theme-choice="light" role="menuitem">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+                                Light
+                            </button>
+                            <button type="button" class="theme-switcher-option" data-theme-choice="dark" role="menuitem">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+                                Dark
+                            </button>
+                            <button type="button" class="theme-switcher-option" data-theme-choice="system" role="menuitem">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                System
+                            </button>
+                        </div>
+                    </div>
                     <a href="#book" class="btn btn-primary btn-sm">Book a Call</a>
                 </div>
                 <button class="nav-toggle" aria-label="Toggle menu">
@@ -65,6 +123,11 @@
             </button>
             <a href="#call-options">Coaching</a>
             <a href="#book" class="btn btn-primary">Book a Call</a>
+            <div class="mobile-theme-switcher" role="group" aria-label="Theme">
+                <button type="button" class="mobile-theme-option" data-theme-choice="light">Light</button>
+                <button type="button" class="mobile-theme-option" data-theme-choice="dark">Dark</button>
+                <button type="button" class="mobile-theme-option" data-theme-choice="system">System</button>
+            </div>
         </div>
 
         <main id="main-content" class="min-h-screen bg-background">
@@ -449,7 +512,7 @@
                                 <div class="author-avatar">AR</div>
                                 <div class="author-info">
                                     <span class="author-name">Alex R.</span>
-                                    <span class="author-detail">Gaming Creator &bull; 12K &rarr; 28K subs</span>
+                                    <span class="author-detail">Gaming Creator &bull; <span class="growth-stat">12K &rarr; 28K subs</span></span>
                                 </div>
                             </div>
                         </div>
@@ -481,6 +544,40 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================
+             SECTION 5C: ABOUT US (Founders note)
+             ============================================ -->
+            <section class="founders-section" id="about">
+                <div class="container">
+                    <div class="founders-inner">
+                        <div class="founders-avatars" aria-hidden="true">
+                            <span class="founders-avatar">R</span>
+                            <span class="founders-avatar">M</span>
+                        </div>
+                        <div class="section-header">
+                            <p class="section-kicker">About us</p>
+                            <h2>The People Behind Forj Intel</h2>
+                        </div>
+                        <div class="founders-prose">
+                            <p>We're Ronaldas and Matteo, and we started Forj Intel because we know how frustrating
+                                YouTube can be. Every day, incredible creators upload videos that deserve to be seen,
+                                yet so many get lost in an increasingly crowded platform. It's easy to feel like you're
+                                doing everything right but still not getting the results your content deserves.</p>
+                            <p>We believe every creator has something that makes them unique. Sometimes it's just about
+                                finding that angle, understanding your audience a little better, and having the right
+                                guidance to keep moving forward. <span class="founders-highlight">That's what we're
+                                    building Forj Intel for.</span></p>
+                            <p>Our goal isn't to tell creators to copy what's already working. It's to help you
+                                discover what makes your channel stand out, backed by meaningful insights, practical
+                                advice, and tools that help you grow with confidence.</p>
+                            <p>We're still building, still learning, and we're excited to have creators shaping this
+                                journey with us.</p>
+                        </div>
+                        <p class="founders-signature">&mdash; Ronaldas &amp; Matteo</p>
                     </div>
                 </div>
             </section>
@@ -519,6 +616,9 @@
 
         <!-- Visual Effects -->
         <script src="effects.js"></script>
+
+        <!-- Theme Toggle -->
+        <script src="theme-toggle.js"></script>
 
         <!-- Navigation & Interactions -->
         <script>
@@ -621,7 +721,7 @@
         <script>
             (function () {
                 const revealElements = document.querySelectorAll(
-                    '.testimonial-card, .highlight-card, .call-option-card, .topic-card'
+                    '.testimonial-card, .highlight-card, .call-option-card, .topic-card, .founders-inner'
                 );
 
                 if (!('IntersectionObserver' in window) ||
