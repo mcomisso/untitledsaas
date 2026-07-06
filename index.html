@@ -4,25 +4,25 @@
     <head>
         <meta charset="UTF-8">
         <script>
-        (function () {
-            try {
-                var KEY = 'forj-landing-theme';
-                var stored = localStorage.getItem(KEY); // "light" | "dark" | "system" | null
-                var mode = stored || 'system';
-                var resolved;
-                if (mode === 'system') {
-                    resolved = (typeof window.matchMedia === 'function')
-                        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-                        : 'dark'; // matchMedia unavailable - fall back to dark
-                } else {
-                    resolved = mode;
+            (function () {
+                try {
+                    var KEY = 'forj-landing-theme';
+                    var stored = localStorage.getItem(KEY); // "light" | "dark" | "system" | null
+                    var mode = stored || 'system';
+                    var resolved;
+                    if (mode === 'system') {
+                        resolved = (typeof window.matchMedia === 'function')
+                            ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                            : 'dark'; // matchMedia unavailable - fall back to dark
+                    } else {
+                        resolved = mode;
+                    }
+                    document.documentElement.setAttribute('data-theme', resolved);
+                    document.documentElement.setAttribute('data-theme-mode', mode);
+                } catch (e) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
                 }
-                document.documentElement.setAttribute('data-theme', resolved);
-                document.documentElement.setAttribute('data-theme-mode', mode);
-            } catch (e) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        })();
+            })();
         </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -66,8 +66,11 @@
                 <div class="nav-links">
                     <a href="#call-options">Coaching</a>
                     <div class="theme-switcher">
-                        <button type="button" class="theme-switcher-trigger" aria-label="Toggle theme" aria-haspopup="true" aria-expanded="false">
-                            <svg class="theme-icon theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" class="theme-switcher-trigger" aria-label="Toggle theme"
+                            aria-haspopup="true" aria-expanded="false">
+                            <svg class="theme-icon theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="18"
+                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="4"></circle>
                                 <line x1="12" y1="2" x2="12" y2="4"></line>
                                 <line x1="12" y1="20" x2="12" y2="22"></line>
@@ -78,26 +81,55 @@
                                 <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
                                 <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
                             </svg>
-                            <svg class="theme-icon theme-icon-dark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="theme-icon theme-icon-dark" xmlns="http://www.w3.org/2000/svg" width="18"
+                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
                             </svg>
-                            <svg class="theme-icon theme-icon-system" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="theme-icon theme-icon-system" xmlns="http://www.w3.org/2000/svg" width="18"
+                                height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="4" width="20" height="14" rx="2"></rect>
                                 <line x1="8" y1="21" x2="16" y2="21"></line>
                                 <line x1="12" y1="17" x2="12" y2="21"></line>
                             </svg>
                         </button>
                         <div class="theme-switcher-menu" role="menu">
-                            <button type="button" class="theme-switcher-option" data-theme-choice="light" role="menuitem">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+                            <button type="button" class="theme-switcher-option" data-theme-choice="light"
+                                role="menuitem">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <line x1="12" y1="2" x2="12" y2="4"></line>
+                                    <line x1="12" y1="20" x2="12" y2="22"></line>
+                                    <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                                    <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+                                    <line x1="2" y1="12" x2="4" y2="12"></line>
+                                    <line x1="20" y1="12" x2="22" y2="12"></line>
+                                    <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+                                    <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+                                </svg>
                                 Light
                             </button>
-                            <button type="button" class="theme-switcher-option" data-theme-choice="dark" role="menuitem">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path></svg>
+                            <button type="button" class="theme-switcher-option" data-theme-choice="dark"
+                                role="menuitem">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+                                </svg>
                                 Dark
                             </button>
-                            <button type="button" class="theme-switcher-option" data-theme-choice="system" role="menuitem">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            <button type="button" class="theme-switcher-option" data-theme-choice="system"
+                                role="menuitem">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="14" rx="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
                                 System
                             </button>
                         </div>
@@ -264,7 +296,8 @@
                                         <span class="preview-panel-title">Subscriber growth</span>
                                         <svg class="preview-chart" viewBox="0 0 320 120" preserveAspectRatio="none"
                                             aria-hidden="true">
-                                            <polyline points="0,100 40,92 80,95 120,78 160,70 200,52 240,44 280,28 320,18"
+                                            <polyline
+                                                points="0,100 40,92 80,95 120,78 160,70 200,52 240,44 280,28 320,18"
                                                 fill="none" stroke="var(--brand-orange)" stroke-width="3"
                                                 stroke-linecap="round" stroke-linejoin="round" />
                                             <polygon
@@ -291,7 +324,8 @@
                             </div>
                         </div>
                     </div>
-                    <p class="platform-preview-note">Illustrative preview &mdash; live dashboard opens with the beta.</p>
+                    <p class="platform-preview-note">Illustrative preview &mdash; live dashboard opens with the beta.
+                    </p>
                 </div>
             </section>
 
@@ -522,7 +556,8 @@
                                     <li>The fastest next move to improve growth or engagement</li>
                                 </ul>
                             </div>
-                            <p class="contact-mini-proof">Private beta access, 1:1 guidance, and practical next steps.</p>
+                            <p class="contact-mini-proof">Private beta access, 1:1 guidance, and practical next steps.
+                            </p>
                         </div>
 
                         <div class="contact-form-card">
@@ -603,7 +638,8 @@
                                 <div class="author-avatar">AR</div>
                                 <div class="author-info">
                                     <span class="author-name">Alex R.</span>
-                                    <span class="author-detail">Gaming Creator &bull; <span class="growth-stat">12K &rarr; 28K subs</span></span>
+                                    <span class="author-detail">Gaming Creator &bull; <span class="growth-stat">12K
+                                            &rarr; 28K subs</span></span>
                                 </div>
                             </div>
                         </div>
@@ -898,7 +934,7 @@
                 // Paste the deployed Google Apps Script Web App URL between the quotes.
                 // Until it is set, this block does nothing and forms behave exactly as before.
                 // Setup steps: see SHEET_SETUP.md
-                const GAS_ENDPOINT = '';
+                const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyVKPtDdpFad2a6EQV85n3ILCNk-JZsL2dcWD5A9nbq46AT-ViLdP0EAW2OqYJLbiQt/exec';
                 if (!GAS_ENDPOINT) return;
 
                 // sendBeacon delivers reliably even when the page navigates away
